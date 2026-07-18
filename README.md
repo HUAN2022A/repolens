@@ -76,6 +76,8 @@ For a task like `add GitHub OAuth login`, RepoLens ranks relevant files and expl
 
 See [`examples/basic-context`](examples/basic-context) for a complete generated context pack from this repository.
 
+For a walkthrough, see [`docs/demo.md`](docs/demo.md). For reproducible baseline notes, see [`docs/benchmark.md`](docs/benchmark.md).
+
 ## Features
 
 - Local repository scanning with dependency/build/cache ignores.
