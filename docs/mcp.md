@@ -50,12 +50,31 @@ Input:
 }
 ```
 
+### `find_relevant_files`
+
+Return a compact list of the most relevant files for a task.
+
+Input:
+
+```json
+{
+  "target": ".",
+  "task": "add GitHub OAuth login",
+  "agent": "codex",
+  "maxFiles": 800,
+  "limit": 12
+}
+```
+
+This is the best tool for an agent's first question: "where should I start?"
+
 ## Example JSON-RPC lines
 
 ```jsonl
 {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05"}}
 {"jsonrpc":"2.0","id":2,"method":"tools/list"}
 {"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"repo_map","arguments":{"target":".","task":"understand this repo"}}}
+{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"find_relevant_files","arguments":{"target":".","task":"add GitHub OAuth login","limit":5}}}
 ```
 
 ## Status

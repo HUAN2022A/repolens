@@ -32,6 +32,20 @@ const tools = [
       },
     },
   },
+  {
+    name: 'find_relevant_files',
+    description: 'Return the most relevant files for a task without writing files or returning the full repo map.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        target: { type: 'string', description: 'Local repository path or public GitHub URL.', default: '.' },
+        task: { type: 'string', description: 'Task to focus relevance ranking on.', default: '' },
+        agent: { type: 'string', enum: ['generic', 'codex', 'claude-code', 'cursor'], default: 'generic' },
+        maxFiles: { type: 'integer', minimum: 1, default: 800 },
+        limit: { type: 'integer', minimum: 1, default: 12 },
+      },
+    },
+  },
 ];
 
 function send(message) {
@@ -59,6 +73,19 @@ async function callTool(name, args = {}) {
   if (name === 'repo_map') {
     const { pack } = await buildContextPack({ ...args, outputMode: 'json' });
     return { content: textContent(pack.files['repo-map.json']) };
+  }
+
+  if (name === 'find_relevant_files') {
+    const limit = Number.isInteger(args.limit) && args.limit > 0 ? args.limit : 12;
+    const { pack } = await buildContextPack({ ...args, outputMode: 'json' });
+    const repoMap = JSON.parse(pack.files['repo-map.json']);
+    return {
+      content: textContent(JSON.stringify({
+        repository: repoMap.repository,
+        task: repoMap.task,
+        files: repoMap.relevantFiles.slice(0, limit),
+      }, null, 2)),
+    };
   }
 
   throw new Error(`Unknown tool: ${name}`);

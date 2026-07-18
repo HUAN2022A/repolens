@@ -43,7 +43,7 @@ test('MCP server lists tools and returns a repo map', async () => {
       id: 2,
       method: 'tools/list',
     });
-    assert.deepEqual(listed.result.tools.map((tool) => tool.name), ['generate_context', 'repo_map']);
+    assert.deepEqual(listed.result.tools.map((tool) => tool.name), ['generate_context', 'repo_map', 'find_relevant_files']);
 
     const called = await sendAndWait(server, {
       jsonrpc: '2.0',
@@ -57,6 +57,19 @@ test('MCP server lists tools and returns a repo map', async () => {
     const repoMap = JSON.parse(called.result.content[0].text);
     assert.equal(repoMap.schemaVersion, 1);
     assert.ok(repoMap.stats.filesIndexed > 0);
+
+    const relevant = await sendAndWait(server, {
+      jsonrpc: '2.0',
+      id: 4,
+      method: 'tools/call',
+      params: {
+        name: 'find_relevant_files',
+        arguments: { target: '.', task: 'validate MCP server', maxFiles: 50, limit: 3 },
+      },
+    });
+    const relevantPayload = JSON.parse(relevant.result.content[0].text);
+    assert.equal(relevantPayload.files.length, 3);
+    assert.ok(relevantPayload.files[0].path);
   } finally {
     server.child.kill();
     await once(server.child, 'exit');
