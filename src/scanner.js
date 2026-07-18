@@ -71,6 +71,7 @@ async function walk(root, current, files, options) {
     const fullPath = path.join(current, entry.name);
     const relativePath = normalize(path.relative(root, fullPath));
     if (entry.isDirectory()) {
+      if (entry.name.startsWith('.repolens')) continue;
       if (DEFAULT_IGNORE_DIRS.has(entry.name)) continue;
       if (isIgnoredByGitignore(relativePath, true, options.gitignoreRules)) continue;
       await walk(root, fullPath, files, options);

@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { scoreFileForTask } from './relevance.js';
 
 const ROLE_LABELS = {
   config: 'Configuration and project metadata',
@@ -26,24 +27,13 @@ function groupByRole(files) {
   }, {});
 }
 
-function taskKeywords(task) {
-  return task
-    .toLowerCase()
-    .split(/[^a-z0-9_\-]+/i)
-    .filter((word) => word.length >= 3)
-    .filter((word) => !['the', 'and', 'for', 'with', 'add', 'fix', 'make', 'this', 'that'].includes(word));
-}
-
-function scoreForTask(file, keywords) {
-  const haystack = `${file.path}\n${file.preview.slice(0, 1200)}`.toLowerCase();
-  return keywords.reduce((score, keyword) => score + (haystack.includes(keyword) ? 20 : 0), file.score);
-}
-
 function taskRelevantFiles(repo, task) {
   if (!task) return topFiles(repo, 16);
-  const keywords = taskKeywords(task);
   return [...repo.files]
-    .map((file) => ({ ...file, taskScore: scoreForTask(file, keywords) }))
+    .map((file) => {
+      const relevance = scoreFileForTask(file, task);
+      return { ...file, taskScore: relevance.score, relevanceReasons: relevance.reasons };
+    })
     .sort((a, b) => b.taskScore - a.taskScore || a.path.localeCompare(b.path))
     .slice(0, 18);
 }
@@ -140,7 +130,7 @@ Task: ${task ? task : 'No task provided. This is a general repository context pa
 
 ## Most relevant files
 
-${relevant.map((file) => `- \`${file.path}\` — ${ROLE_LABELS[file.role] ?? file.role}`).join('\n')}
+${relevant.map((file) => `- \`${file.path}\` — ${ROLE_LABELS[file.role] ?? file.role}; ${file.relevanceReasons?.join('; ') ?? 'high-signal file'}`).join('\n')}
 
 ## Why these files matter
 
@@ -218,6 +208,7 @@ export function generateContextPack(repo, options = {}) {
     role: file.role,
     size: file.size,
     score: file.taskScore ?? file.score,
+    reasons: file.relevanceReasons ?? [],
   }));
   const repoMap = {
     schemaVersion: 1,

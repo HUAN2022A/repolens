@@ -43,6 +43,7 @@ RepoLens writes a `.repolens/` folder by default:
 - Detects common stacks from manifests such as `package.json`, `pyproject.toml`, `go.mod`, and `Cargo.toml`.
 - Classifies files into config, entrypoint, business logic, UI, tests, docs, and source.
 - Generates a general repo overview and a task-focused context pack.
+- Ranks task-relevant files with path, filename, content, role, and domain-hint signals.
 - Produces an agent prompt tuned for generic agents, Codex, Claude Code, or Cursor.
 - Writes `repo-map.json` for tools, MCP servers, and future integrations.
 
