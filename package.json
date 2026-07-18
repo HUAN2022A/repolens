@@ -1,6 +1,6 @@
 {
   "name": "@huan2022a/repolens",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Generate compact, agent-ready context packs for AI coding agents.",
   "type": "module",
   "files": [

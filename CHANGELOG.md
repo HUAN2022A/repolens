@@ -2,6 +2,14 @@
 
 All notable changes to RepoLens will be documented here.
 
+## [0.9.0] - 2026-07-19
+
+### Added
+
+- `test_strategy` core for verification commands, nearby tests, related files, coverage gaps, and risk guidance.
+- `test_strategy` MCP tool for coding agents.
+- MCP docs and tests for verification planning workflows.
+
 ## [0.8.0] - 2026-07-19
 
 ### Added
