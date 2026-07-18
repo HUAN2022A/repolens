@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { buildContextPack, writeContextPack } from './context.js';
 import { analyzeImpact } from './impact.js';
+import { generateTestStrategy } from './test-strategy.js';
 
 const serverInfo = { name: 'repolens', version: '0.8.0' };
 
@@ -63,6 +64,22 @@ const tools = [
       },
     },
   },
+  {
+    name: 'test_strategy',
+    description: 'Suggest verification commands, nearby tests, files to inspect, coverage gaps, and risk for a task or target files.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        target: { type: 'string', description: 'Local repository path or public GitHub URL.', default: '.' },
+        task: { type: 'string', description: 'Task to focus relevance and test strategy on.', default: '' },
+        file: { type: 'string', description: 'Optional repository-relative file path.' },
+        files: { type: 'array', items: { type: 'string' }, description: 'Optional repository-relative files.' },
+        agent: { type: 'string', enum: ['generic', 'codex', 'claude-code', 'cursor'], default: 'generic' },
+        maxFiles: { type: 'integer', minimum: 1, default: 800 },
+        limit: { type: 'integer', minimum: 1, default: 12 },
+      },
+    },
+  },
 ];
 
 function send(message) {
@@ -110,6 +127,12 @@ async function callTool(name, args = {}) {
     const { pack } = await buildContextPack({ ...args, outputMode: 'json' });
     const repoMap = JSON.parse(pack.files['repo-map.json']);
     return { content: textContent(JSON.stringify(analyzeImpact(repoMap, args.file, args), null, 2)) };
+  }
+
+  if (name === 'test_strategy') {
+    const { pack } = await buildContextPack({ ...args, outputMode: 'json' });
+    const repoMap = JSON.parse(pack.files['repo-map.json']);
+    return { content: textContent(JSON.stringify(generateTestStrategy(repoMap, args), null, 2)) };
   }
 
   throw new Error(`Unknown tool: ${name}`);

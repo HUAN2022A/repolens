@@ -89,6 +89,25 @@ Input:
 
 This is the best tool for an agent's question: "if I edit this file, what else should I inspect?"
 
+### `test_strategy`
+
+Suggest verification commands, nearby tests, files to inspect, coverage gaps, and risk level for a task or target file.
+
+Input:
+
+```json
+{
+  "target": ".",
+  "task": "change MCP tools",
+  "file": "src/mcp.js",
+  "agent": "codex",
+  "maxFiles": 800,
+  "limit": 12
+}
+```
+
+This is the best tool for an agent's question: "what should I run or add to verify this change?"
+
 ## Example JSON-RPC lines
 
 ```jsonl
@@ -97,6 +116,7 @@ This is the best tool for an agent's question: "if I edit this file, what else s
 {"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"repo_map","arguments":{"target":".","task":"understand this repo"}}}
 {"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"find_relevant_files","arguments":{"target":".","task":"add GitHub OAuth login","limit":5}}}
 {"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"impact_analysis","arguments":{"target":".","file":"src/mcp.js","task":"change MCP tools"}}}
+{"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"test_strategy","arguments":{"target":".","file":"src/mcp.js","task":"change MCP tools"}}}
 ```
 
 ## Status
