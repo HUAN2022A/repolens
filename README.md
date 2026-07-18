@@ -1,5 +1,7 @@
 # RepoLens
 
+[![CI](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml/badge.svg)](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml)
+
 RepoLens generates compact, agent-ready context packs for AI coding agents.
 
 Instead of dumping an entire repository into a model, RepoLens scans the project, finds high-signal files, infers the repository shape, and writes Markdown context that can be pasted into Codex, Claude Code, Cursor, Gemini CLI, OpenCode, or another coding agent.
