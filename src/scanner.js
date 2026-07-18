@@ -1,5 +1,6 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { analyzeRepository } from './analyzer.js';
 import { isIgnoredByGitignore, loadGitignore } from './gitignore.js';
 
 const DEFAULT_IGNORE_DIRS = new Set([
@@ -123,9 +124,11 @@ export async function scanRepository(root, options = {}) {
   const files = [];
   const gitignoreRules = await loadGitignore(root);
   await walk(root, root, files, { maxFiles: options.maxFiles ?? 800, gitignoreRules });
-  files.sort((a, b) => b.score - a.score || a.path.localeCompare(b.path));
+  const analysis = analyzeRepository(files);
+  const analyzedFiles = analysis.files;
+  analyzedFiles.sort((a, b) => b.score - a.score || a.path.localeCompare(b.path));
 
-  const roleCounts = files.reduce((acc, file) => {
+  const roleCounts = analyzedFiles.reduce((acc, file) => {
     acc[file.role] = (acc[file.role] ?? 0) + 1;
     return acc;
   }, {});
@@ -135,9 +138,10 @@ export async function scanRepository(root, options = {}) {
     source: options.source ?? root,
     name: path.basename(root),
     scannedAt: new Date().toISOString(),
-    stack: detectStack(files),
-    files,
+    stack: detectStack(analyzedFiles),
+    files: analyzedFiles,
     roleCounts,
+    analysis: analysis.summary,
     gitignoreRules: gitignoreRules.map((rule) => rule.raw),
   };
 }
