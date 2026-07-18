@@ -85,6 +85,12 @@ npm pack --dry-run
 
 The package includes the CLI source, smoke-test script, README, and license.
 
+## Contributing and security
+
+- See [`CONTRIBUTING.md`](CONTRIBUTING.md) for local development and project principles.
+- See [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
+- See [`CHANGELOG.md`](CHANGELOG.md) for release history.
+
 ## License
 
 MIT
