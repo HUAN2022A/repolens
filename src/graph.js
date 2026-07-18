@@ -13,10 +13,7 @@ function withoutExtension(filePath) {
   return extension ? filePath.slice(0, -extension.length) : filePath;
 }
 
-function candidatePaths(fromPath, importSource) {
-  if (!importSource.startsWith('.') && !importSource.startsWith('/')) return [];
-  const fromDir = path.posix.dirname(fromPath);
-  const base = normalize(path.posix.normalize(importSource.startsWith('/') ? importSource.slice(1) : path.posix.join(fromDir, importSource)));
+function candidatePathsFromBase(base) {
   const extension = path.extname(base);
   if (extension) return [base];
 
@@ -26,12 +23,58 @@ function candidatePaths(fromPath, importSource) {
   return candidates;
 }
 
-function resolveImport(fromPath, importSource, fileSet) {
-  for (const candidate of candidatePaths(fromPath, importSource)) {
+function candidatePaths(fromPath, importSource) {
+  if (!importSource.startsWith('.') && !importSource.startsWith('/')) return [];
+  const fromDir = path.posix.dirname(fromPath);
+  const base = normalize(path.posix.normalize(importSource.startsWith('/') ? importSource.slice(1) : path.posix.join(fromDir, importSource)));
+  return candidatePathsFromBase(base);
+}
+
+function stripJsonComments(text) {
+  return text
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/^\s*\/\/.*$/gm, '');
+}
+
+function parseConfigAliases(file) {
+  try {
+    const parsed = JSON.parse(stripJsonComments(file.preview));
+    const compilerOptions = parsed.compilerOptions ?? {};
+    const baseUrl = normalize(compilerOptions.baseUrl ?? '.').replace(/^\.\//, '');
+    const paths = compilerOptions.paths ?? {};
+    return Object.entries(paths).flatMap(([pattern, targets]) => {
+      if (!Array.isArray(targets)) return [];
+      const prefix = pattern.replace(/\*.*$/, '');
+      return targets.map((target) => ({
+        prefix,
+        targetPrefix: normalize(path.posix.join(baseUrl, target.replace(/\*.*$/, ''))).replace(/^\.\//, ''),
+        source: file.path,
+      }));
+    });
+  } catch {
+    return [];
+  }
+}
+
+function aliasRules(files) {
+  const rules = files
+    .filter((file) => ['tsconfig.json', 'jsconfig.json'].includes(path.posix.basename(file.path)))
+    .flatMap(parseConfigAliases);
+
+  const hasSrc = files.some((file) => file.path.startsWith('src/'));
+  if (hasSrc && !rules.some((rule) => rule.prefix === '@/')) {
+    rules.push({ prefix: '@/', targetPrefix: 'src/', source: 'convention:@/*' });
+  }
+
+  return rules.filter((rule) => rule.prefix && rule.targetPrefix);
+}
+
+function resolveCandidates(candidates, fileSet) {
+  for (const candidate of candidates) {
     if (fileSet.has(candidate)) return candidate;
   }
 
-  const extensionlessCandidates = candidatePaths(fromPath, importSource).map(withoutExtension);
+  const extensionlessCandidates = candidates.map(withoutExtension);
   for (const filePath of fileSet) {
     if (extensionlessCandidates.includes(withoutExtension(filePath))) return filePath;
   }
@@ -39,17 +82,33 @@ function resolveImport(fromPath, importSource, fileSet) {
   return null;
 }
 
+function resolveImport(fromPath, importSource, fileSet, rules) {
+  const relativeTarget = resolveCandidates(candidatePaths(fromPath, importSource), fileSet);
+  if (relativeTarget) return { target: relativeTarget, kind: 'relative' };
+
+  for (const rule of rules) {
+    if (!importSource.startsWith(rule.prefix)) continue;
+    const rest = importSource.slice(rule.prefix.length);
+    const base = normalize(path.posix.normalize(`${rule.targetPrefix}${rest}`));
+    const target = resolveCandidates(candidatePathsFromBase(base), fileSet);
+    if (target) return { target, kind: 'alias', alias: rule.prefix, aliasSource: rule.source };
+  }
+
+  return null;
+}
+
 export function buildDependencyGraph(files) {
   const fileSet = new Set(files.map((file) => file.path));
+  const rules = aliasRules(files);
   const edges = [];
   const unresolvedImports = [];
 
   for (const file of files) {
     for (const item of file.imports ?? []) {
-      const target = resolveImport(file.path, item.source, fileSet);
-      if (target) {
-        edges.push({ from: file.path, to: target, source: item.source });
-      } else if (item.source.startsWith('.') || item.source.startsWith('/')) {
+      const resolved = resolveImport(file.path, item.source, fileSet, rules);
+      if (resolved) {
+        edges.push({ from: file.path, to: resolved.target, source: item.source, kind: resolved.kind, alias: resolved.alias });
+      } else if (item.source.startsWith('.') || item.source.startsWith('/') || rules.some((rule) => item.source.startsWith(rule.prefix))) {
         unresolvedImports.push({ from: file.path, source: item.source });
       }
     }
@@ -72,9 +131,11 @@ export function buildDependencyGraph(files) {
     unresolvedImports,
     summary: {
       edgeCount: edges.length,
+      aliasEdgeCount: edges.filter((edge) => edge.kind === 'alias').length,
       unresolvedImportCount: unresolvedImports.length,
       filesWithOutgoingEdges: outgoing.size,
       filesWithIncomingEdges: incoming.size,
+      aliasRules: rules,
       hotspots,
     },
   };
