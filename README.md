@@ -30,6 +30,7 @@ RepoLens writes a `.repolens/` folder by default:
   architecture.md
   task-context.md
   agent-prompt.md
+  repo-map.json
 ~~~
 
 ## What it does today
@@ -41,6 +42,7 @@ RepoLens writes a `.repolens/` folder by default:
 - Classifies files into config, entrypoint, business logic, UI, tests, docs, and source.
 - Generates a general repo overview and a task-focused context pack.
 - Produces an agent prompt tuned for generic agents, Codex, Claude Code, or Cursor.
+- Writes `repo-map.json` for tools, MCP servers, and future integrations.
 
 ## What comes next
 

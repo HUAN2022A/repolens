@@ -213,12 +213,44 @@ ${relevant.map((file) => `- \`${file.path}\``).join('\n')}
 export function generateContextPack(repo, options = {}) {
   const task = options.task ?? '';
   const agent = options.agent ?? 'generic';
+  const relevantFiles = taskRelevantFiles(repo, task).map((file) => ({
+    path: file.path,
+    role: file.role,
+    size: file.size,
+    score: file.taskScore ?? file.score,
+  }));
+  const repoMap = {
+    schemaVersion: 1,
+    generatedAt: repo.scannedAt,
+    repository: {
+      name: repo.name,
+      root: repo.root,
+      source: repo.source ?? repo.root,
+      stack: repo.stack,
+    },
+    task: task || null,
+    agent,
+    stats: {
+      filesIndexed: repo.files.length,
+      roleCounts: repo.roleCounts,
+      gitignoreRulesLoaded: repo.gitignoreRules?.length ?? 0,
+    },
+    relevantFiles,
+    files: repo.files.map((file) => ({
+      path: file.path,
+      role: file.role,
+      size: file.size,
+      extension: file.extension,
+      score: file.score,
+    })),
+  };
   return {
     files: {
       'overview.md': generateOverview(repo),
       'architecture.md': generateArchitecture(repo),
       'task-context.md': generateTaskContext(repo, task),
       'agent-prompt.md': generateAgentPrompt(repo, task, agent),
+      'repo-map.json': `${JSON.stringify(repoMap, null, 2)}\n`,
     },
   };
 }
