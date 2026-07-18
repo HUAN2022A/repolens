@@ -2,6 +2,19 @@
 
 All notable changes to RepoLens will be documented here.
 
+## [0.4.0] - 2026-07-19
+
+### Added
+
+- Dependency-free symbol and import extraction for common JS/TS, Python, Go, Rust, and Java patterns.
+- Symbol and import stats in `repo-map.json`.
+- Per-file `symbols` and `imports` arrays in machine-readable output.
+- Symbol/import hotspots in generated architecture docs and task context.
+
+### Changed
+
+- Refreshed example context output to include symbols and imports.
+
 ## [0.3.0] - 2026-07-19
 
 ### Added
