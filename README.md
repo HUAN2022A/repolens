@@ -73,7 +73,7 @@ node src/mcp.js
 repolens-mcp
 ```
 
-It exposes `generate_context`, `repo_map`, and `find_relevant_files` tools for coding agents. See [`docs/mcp.md`](docs/mcp.md).
+It exposes `generate_context`, `repo_map`, and `find_relevant_files` tools for coding agents. See [`docs/mcp.md`](docs/mcp.md), and setup snippets in [`docs/agent-setup.md`](docs/agent-setup.md).
 
 ## Example task context
 

@@ -14,6 +14,8 @@ When installed as a package, use:
 repolens-mcp
 ```
 
+For client configuration snippets, see [`agent-setup.md`](agent-setup.md).
+
 ## Tools
 
 ### `generate_context`

@@ -25,6 +25,7 @@ node src/cli.js . --task "improve repo context" --for codex
 - More precise task relevance scoring.
 - Additional output formats for coding agents.
 - MCP server integration.
+- Agent setup snippets and compatibility notes.
 - GitHub Action integration for issues and PRs.
 
 ## Project principles
