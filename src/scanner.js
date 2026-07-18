@@ -1,6 +1,7 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { analyzeRepository } from './analyzer.js';
+import { buildDependencyGraph } from './graph.js';
 import { isIgnoredByGitignore, loadGitignore } from './gitignore.js';
 
 const DEFAULT_IGNORE_DIRS = new Set([
@@ -126,6 +127,7 @@ export async function scanRepository(root, options = {}) {
   await walk(root, root, files, { maxFiles: options.maxFiles ?? 800, gitignoreRules });
   const analysis = analyzeRepository(files);
   const analyzedFiles = analysis.files;
+  const graph = buildDependencyGraph(analyzedFiles);
   analyzedFiles.sort((a, b) => b.score - a.score || a.path.localeCompare(b.path));
 
   const roleCounts = analyzedFiles.reduce((acc, file) => {
@@ -142,6 +144,7 @@ export async function scanRepository(root, options = {}) {
     files: analyzedFiles,
     roleCounts,
     analysis: analysis.summary,
+    graph,
     gitignoreRules: gitignoreRules.map((rule) => rule.raw),
   };
 }
