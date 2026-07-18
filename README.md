@@ -1,7 +1,7 @@
 # RepoLens
 
 [![CI](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml/badge.svg)](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/HUAN2022A/repolens)](https://github.com/HUAN2022A/repolens/releases/tag/v0.1.0)
+[![Release](https://img.shields.io/github/v/release/HUAN2022A/repolens)](https://github.com/HUAN2022A/repolens/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Give your AI coding agent the repo context it actually needs.
@@ -127,6 +127,7 @@ The unit tests cover CLI validation, ignore matching, relevance scoring, and out
 - See [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
 - See [`CHANGELOG.md`](CHANGELOG.md) for release history.
 - See [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md) for the first release notes.
+- See [`docs/releases/v0.2.0.md`](docs/releases/v0.2.0.md) for the latest release notes.
 
 ## License
 

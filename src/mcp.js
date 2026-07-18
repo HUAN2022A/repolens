@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { buildContextPack, writeContextPack } from './context.js';
 
-const serverInfo = { name: 'repolens', version: '0.1.0' };
+const serverInfo = { name: 'repolens', version: '0.2.0' };
 
 const tools = [
   {
