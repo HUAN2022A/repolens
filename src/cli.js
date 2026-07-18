@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { buildContextPack, writeContextPack } from './context.js';
 
-const VERSION = '0.9.0';
+const VERSION = '1.0.0';
 
 function printHelp() {
   console.log(`RepoLens ${VERSION}

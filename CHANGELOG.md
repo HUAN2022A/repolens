@@ -2,6 +2,25 @@
 
 All notable changes to RepoLens will be documented here.
 
+## [1.0.0] - 2026-07-19
+
+### Added
+
+- v1.0 architecture documentation for the CLI, MCP, scanner, analyzer, graph, relevance, impact, test strategy, and output layers.
+- Stable MCP schema documentation for `generate_context`, `repo_map`, `find_relevant_files`, `impact_analysis`, and `test_strategy`.
+- Public roadmap describing the v1.0 foundation, near-term improvements, future directions, and non-goals.
+- v1.0 readiness audit with validation criteria, accepted limitations, and npm authentication status.
+
+### Changed
+
+- Promoted the package, CLI, and MCP server version to `1.0.0`.
+- Refreshed README links so contributors can find architecture, schema, roadmap, readiness, and release documentation.
+
+### Notes
+
+- GitHub distribution is ready at v1.0.0.
+- npm publishing still requires an authenticated local npm session for `@huan2022a/repolens`.
+
 ## [0.9.0] - 2026-07-19
 
 ### Added

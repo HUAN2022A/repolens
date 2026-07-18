@@ -3,7 +3,7 @@ import { buildContextPack, writeContextPack } from './context.js';
 import { analyzeImpact } from './impact.js';
 import { generateTestStrategy } from './test-strategy.js';
 
-const serverInfo = { name: 'repolens', version: '0.9.0' };
+const serverInfo = { name: 'repolens', version: '1.0.0' };
 
 const tools = [
   {
