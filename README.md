@@ -58,6 +58,14 @@ node src/cli.js ./my-app --task "add team invitation emails" --for codex
 
 Then paste `.repolens/agent-prompt.md` and `.repolens/task-context.md` into your AI coding agent before implementation.
 
+## Smoke test
+
+```bash
+npm run smoke
+```
+
+The smoke test runs RepoLens against this repository and verifies that all Markdown outputs plus `repo-map.json` are generated and parseable.
+
 ## License
 
 MIT

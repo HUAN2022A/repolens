@@ -1,6 +1,7 @@
 node_modules/
 .repolens/
 .repolens-smoke/
+.repolens-smoke-test/
 .repolens-demo-*/
 .repolens-check-*/
 dist/
