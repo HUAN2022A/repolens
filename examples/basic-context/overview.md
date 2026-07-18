@@ -1,6 +1,6 @@
 # RepoLens Overview: repolens
 
-Generated at: 2026-07-18T16:29:24.419Z
+Generated at: 2026-07-18T17:08:20.816Z
 
 ## Detected stack
 
@@ -8,7 +8,7 @@ Generated at: 2026-07-18T16:29:24.419Z
 
 ## Repository shape
 
-- Documentation: 18
+- Documentation: 20
 - General source files: 15
 - Tests and verification: 9
 - Configuration and project metadata: 1

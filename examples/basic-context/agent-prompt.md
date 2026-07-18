@@ -18,16 +18,16 @@ Task: add GitHub OAuth login
 
 - `README.md`
 - `examples/basic-context/task-context.md`
-- `examples/basic-context/repo-map.json`
 - `examples/README.md`
 - `test/relevance.test.js`
+- `examples/basic-context/repo-map.json`
 - `test/generator.test.js`
 - `src/relevance.js`
 - `docs/mcp.md`
 - `package.json`
 - `src/cli.js`
 - `docs/benchmark.md`
-- `src/source.js`
+- `docs/demo.md`
 
 ## Architecture constraints inferred from repository shape
 

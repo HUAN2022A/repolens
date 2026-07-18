@@ -6,22 +6,22 @@ Task: add GitHub OAuth login
 
 - `README.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
 - `examples/basic-context/task-context.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
-- `examples/basic-context/repo-map.json` — General source files; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
 - `examples/README.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
 - `test/relevance.test.js` — Tests and verification; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
+- `examples/basic-context/repo-map.json` — General source files; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
 - `test/generator.test.js` — Tests and verification; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
 - `src/relevance.js` — General source files; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"; content mentions "user"
 - `docs/mcp.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
 - `package.json` — Configuration and project metadata; content mentions "github"; content mentions "auth"
 - `src/cli.js` — General source files; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "user"
 - `docs/benchmark.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
+- `docs/demo.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
 - `src/source.js` — General source files; content mentions "github"
 - `src/mcp.js` — General source files; content mentions "github"
 - `.github/ISSUE_TEMPLATE/config.yml` — General source files; path matches "github"; content mentions "github"
 - `.github/ISSUE_TEMPLATE/feature_request.yml` — General source files; path matches "github"; content mentions "user"
 - `docs/agent-setup.md` — Documentation; content mentions "github"; content mentions "auth"; content mentions "user"
 - `test/analyzer.test.js` — Tests and verification; content mentions "user"
-- `src/context.js` — General source files; content mentions "github"
 
 ## Why these files matter
 
@@ -40,6 +40,7 @@ Preview:
 
 [![CI](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml/badge.svg)](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/HUAN2022A/repolens)](https://github.com/HUAN2022A/repolens/releases)
+[![npm](https://img.shields.io/npm/v/@huan2022a/repolens?label=npm)](https://www.npmjs.com/package/@huan2022a/repolens)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Give your AI coding agent the repo context it actually needs.
@@ -52,9 +53,7 @@ AI coding agents are powerful, but they still waste time and tokens reading the 
 
 - find the files that matter for a task;
 - summarize the repository shape;
-- expose project conventions and likely verification commands;
-- produce a prompt you can paste directly into an agent;
-- emit JSON for future M
+- expose project convent
 ```
 
 ### `examples/basic-context/task-context.md`
@@ -79,71 +78,8 @@ Task: add GitHub OAuth login
 - `examples/basic-context/repo-map.json` — General source files; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
 - `examples/README.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
 - `test/relevance.test.js` — Tests and verification; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
-- `src/relevance.js` — General source files; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"; content mentions "user"
-- `docs/mcp.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "logi
-```
-
-### `examples/basic-context/repo-map.json`
-
-Role: General source files
-
-Symbols: None detected
-
-Imports: None detected
-
-Preview:
-
-```json
-{
-  "schemaVersion": 1,
-  "generatedAt": "2026-07-18T16:23:17.623Z",
-  "repository": {
-    "name": "repolens",
-    "root": "C:\\Users\\qzh\\Documents\\Codex\\2026-07-18\\new-chat\\outputs\\repolens",
-    "source": ".",
-    "stack": [
-      "Node.js / JavaScript"
-    ]
-  },
-  "task": "add GitHub OAuth login",
-  "agent": "codex",
-  "stats": {
-    "filesIndexed": 40,
-    "roleCounts": {
-      "docs": 17,
-      "config": 1,
-      "source": 14,
-      "test": 8
-    },
-    "gitignoreRulesLoaded": 10,
-    "symbolsDetected": 178,
-    "importsDetected": 50,
-    "filesWithSymbols": 17,
-    "filesWithImports": 15
-  },
-  "relevantFiles": [
-    {
-      "path": "README.md",
-      "role": "docs",
-      "size": 5279,
-      "score": 186,
-      "reasons": [
-        "content mentions \"github\"",
-        "content mentions \"oauth\"",
-        "content mentions \"login\"",
-        "content mentions \"auth\""
-      ]
-    },
-    {
-      "path": "examples/basic-context/task-context.md",
-      "role": "docs",
-      "size": 13115,
-      "score": 180,
-      "reasons": [
-        "content mentions \"github\"",
-        "content mentions \"oauth\"",
-        "content mentions \"login\"",
-        "content mentions
+- `test/generator.test.js` — Tests and verification; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
+- `src/relevance.js` — General source files; content mentions "oauth"; content mentions "login"; content mentions "auth"; con
 ```
 
 ### `examples/README.md`
@@ -201,6 +137,70 @@ test('scores task-specific files above unrelated files', () => {
 });
 ```
 
+### `examples/basic-context/repo-map.json`
+
+Role: General source files
+
+Symbols: None detected
+
+Imports: None detected
+
+Preview:
+
+```json
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T16:29:24.419Z",
+  "repository": {
+    "name": "repolens",
+    "root": "C:\\Users\\qzh\\Documents\\Codex\\2026-07-18\\new-chat\\outputs\\repolens",
+    "source": ".",
+    "stack": [
+      "Node.js / JavaScript"
+    ]
+  },
+  "task": "add GitHub OAuth login",
+  "agent": "codex",
+  "stats": {
+    "filesIndexed": 43,
+    "roleCounts": {
+      "docs": 18,
+      "config": 1,
+      "source": 15,
+      "test": 9
+    },
+    "gitignoreRulesLoaded": 10,
+    "symbolsDetected": 202,
+    "importsDetected": 55,
+    "filesWithSymbols": 19,
+    "filesWithImports": 17,
+    "dependencyEdges": 14,
+    "unresolvedRelativeImports": 1,
+    "filesWithOutgoingEdges": 10,
+    "filesWithIncomingEdges": 8
+  },
+  "dependencyGraph": {
+    "edges": [
+      {
+        "from": "src/cli.js",
+        "to": "src/context.js",
+        "source": "./context.js"
+      },
+      {
+        "from": "src/context.js",
+        "to": "src/scanner.js",
+        "source": "./scanner.js"
+      },
+      {
+        "from": "src/context.js",
+        "to": "src/generator.js",
+        "source": "./generator.js"
+      },
+      {
+        "from": "src/context.js",
+        "to": "src/source.js
+```
+
 ### `test/generator.test.js`
 
 Role: Tests and verification
@@ -230,19 +230,17 @@ const repo = {
     unresolvedImports: [],
     summary: {
       edgeCount: 1,
+      aliasEdgeCount: 0,
       unresolvedImportCount: 0,
       filesWithOutgoingEdges: 1,
       filesWithIncomingEdges: 1,
+      aliasRules: [],
       hotspots: [{ file: 'src/session.js', incoming: 1 }],
     },
   },
   files: [
     { path: 'package.json', role: 'config', size: 2, extension: '.json', score: 50, symbols: [], imports: [], preview: '{"scripts":{"test":"node --test"}}' },
-    { path: 'src/auth.js', role: 'source', size: 42, extension: '.js', score: 10, symbols: [{ name: 'login', kind: 'function', line: 1 }], imports: [{ source: './session' }], preview: 'function login() { return "oauth" }' },
-  ],
-};
-
-test('generates all files by d
+    { path: 'src/auth.js', role: 'source', size: 42, extension: '.js', score: 10, symbols: [{ name: 'login', kind: 'function', line: 1 }], imports: [{ source: './session' }], preview: 'function login() { return "oauth
 ```
 
 ### `src/relevance.js`
@@ -368,8 +366,8 @@ Preview:
 
 ```json
 {
-  "name": "repolens",
-  "version": "0.4.0",
+  "name": "@huan2022a/repolens",
+  "version": "0.6.0",
   "description": "Generate compact, agent-ready context packs for AI coding agents.",
   "type": "module",
   "files": [
@@ -428,7 +426,7 @@ Preview:
 #!/usr/bin/env node
 import { buildContextPack, writeContextPack } from './context.js';
 
-const VERSION = '0.4.0';
+const VERSION = '0.6.0';
 
 function printHelp() {
   console.log(`RepoLens ${VERSION}

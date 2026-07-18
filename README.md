@@ -112,6 +112,7 @@ For a walkthrough, see [`docs/demo.md`](docs/demo.md). For reproducible baseline
 - Task-aware relevance ranking with path, filename, content, role, and domain-hint signals.
 - Dependency-free symbol and import extraction for common JS/TS, Python, Go, Rust, and Java patterns.
 - Internal dependency edge resolution for relative imports, including index-file candidates.
+- `tsconfig.json` / `jsconfig.json` path alias resolution plus common `@/* -> src/*` convention.
 - Agent-flavored prompts for generic agents, Codex, Claude Code, and Cursor.
 - All-output, JSON-only, and Markdown-only generation modes.
 - Node test suite, smoke test, GitHub Actions CI, release notes, and example output.

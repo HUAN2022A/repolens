@@ -16,9 +16,11 @@ const repo = {
     unresolvedImports: [],
     summary: {
       edgeCount: 1,
+      aliasEdgeCount: 0,
       unresolvedImportCount: 0,
       filesWithOutgoingEdges: 1,
       filesWithIncomingEdges: 1,
+      aliasRules: [],
       hotspots: [{ file: 'src/session.js', incoming: 1 }],
     },
   },
@@ -46,7 +48,9 @@ test('supports JSON-only output mode', () => {
   assert.equal(parsed.schemaVersion, 1);
   assert.equal(parsed.stats.symbolsDetected, 1);
   assert.equal(parsed.stats.dependencyEdges, 1);
+  assert.equal(parsed.stats.aliasDependencyEdges, 0);
   assert.equal(parsed.dependencyGraph.edges[0].to, 'src/session.js');
+  assert.deepEqual(parsed.dependencyGraph.aliasRules, []);
   assert.deepEqual(parsed.files.find((file) => file.path === 'src/auth.js').symbols[0].name, 'login');
 });
 

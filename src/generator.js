@@ -111,6 +111,7 @@ This is an automatically generated first-pass map. Treat it as a navigation laye
 - Symbols detected: ${repo.analysis?.symbolCount ?? 0}
 - Imports detected: ${repo.analysis?.importCount ?? 0}
 - Internal dependency edges: ${repo.graph?.summary?.edgeCount ?? 0}
+- Alias dependency edges: ${repo.graph?.summary?.aliasEdgeCount ?? 0}
 - Unresolved relative imports: ${repo.graph?.summary?.unresolvedImportCount ?? 0}
 
 ## Likely layers
@@ -254,6 +255,7 @@ export function generateContextPack(repo, options = {}) {
       filesWithSymbols: repo.analysis?.filesWithSymbols ?? 0,
       filesWithImports: repo.analysis?.filesWithImports ?? 0,
       dependencyEdges: repo.graph?.summary?.edgeCount ?? 0,
+      aliasDependencyEdges: repo.graph?.summary?.aliasEdgeCount ?? 0,
       unresolvedRelativeImports: repo.graph?.summary?.unresolvedImportCount ?? 0,
       filesWithOutgoingEdges: repo.graph?.summary?.filesWithOutgoingEdges ?? 0,
       filesWithIncomingEdges: repo.graph?.summary?.filesWithIncomingEdges ?? 0,
@@ -262,6 +264,7 @@ export function generateContextPack(repo, options = {}) {
       edges: repo.graph?.edges ?? [],
       unresolvedImports: repo.graph?.unresolvedImports ?? [],
       hotspots: repo.graph?.summary?.hotspots ?? [],
+      aliasRules: repo.graph?.summary?.aliasRules ?? [],
     },
     relevantFiles,
     files: repo.files.map((file) => ({

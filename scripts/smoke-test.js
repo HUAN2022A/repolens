@@ -34,9 +34,11 @@ async function main() {
   if (!Array.isArray(repoMap.relevantFiles) || repoMap.relevantFiles.length === 0) throw new Error('repo-map has no relevant files');
   if (typeof repoMap.stats.symbolsDetected !== 'number') throw new Error('repo-map is missing symbol stats');
   if (typeof repoMap.stats.dependencyEdges !== 'number') throw new Error('repo-map is missing dependency edge stats');
+  if (typeof repoMap.stats.aliasDependencyEdges !== 'number') throw new Error('repo-map is missing alias dependency edge stats');
   if (!repoMap.dependencyGraph || !Array.isArray(repoMap.dependencyGraph.edges)) {
     throw new Error('repo-map is missing dependency graph edges');
   }
+  if (!Array.isArray(repoMap.dependencyGraph.aliasRules)) throw new Error('repo-map is missing dependency graph alias rules');
   if (!repoMap.files.every((file) => Array.isArray(file.symbols) && Array.isArray(file.imports))) {
     throw new Error('repo-map files must include symbols and imports arrays');
   }

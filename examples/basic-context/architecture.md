@@ -7,11 +7,12 @@ This is an automatically generated first-pass map. Treat it as a navigation laye
 - Root: `C:\Users\qzh\Documents\Codex\2026-07-18\new-chat\outputs\repolens`
 - Source: `.`
 - Detected stack: Node.js / JavaScript
-- Files indexed: 43
-- .gitignore rules loaded: 10
-- Symbols detected: 202
+- Files indexed: 45
+- .gitignore rules loaded: 11
+- Symbols detected: 219
 - Imports detected: 55
 - Internal dependency edges: 14
+- Alias dependency edges: 0
 - Unresolved relative imports: 1
 
 ## Likely layers
@@ -65,7 +66,7 @@ This is an automatically generated first-pass map. Treat it as a navigation laye
 - `src/context.js` — function buildContextPack, function writeContextPack, const target, const source, const root
 - `src/generator.js` — function lines, function topFiles, function groupByRole, function taskRelevantFiles, function inferCommands
 - `src/gitignore.js` — function escapeRegex, function globToRegex, function parseLine, function loadGitignore, function isIgnoredByGitignore
-- `src/graph.js` — function normalize, function withoutExtension, function candidatePaths, function resolveImport, function buildDependencyGraph
+- `src/graph.js` — function normalize, function withoutExtension, function candidatePathsFromBase, function candidatePaths, function stripJsonComments
 - `src/mcp.js` — function send, function textContent, function callTool, function handle, const serverInfo
 - `src/relevance.js` — function taskKeywords, function expandedKeywords, function countOccurrences, function scoreFileForTask, const STOP_WORDS
 - `src/scanner.js` — function normalize, function isProbablySource, function detectRole, function scoreFile, function readPreview
