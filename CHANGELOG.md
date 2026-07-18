@@ -2,6 +2,17 @@
 
 All notable changes to RepoLens will be documented here.
 
+## [0.6.0] - 2026-07-19
+
+### Changed
+
+- Renamed npm package metadata to the available scoped package `@huan2022a/repolens` while preserving the `repolens` and `repolens-mcp` command names.
+- Updated README and agent setup docs with npm installation guidance.
+
+### Notes
+
+- The unscoped `repolens` npm package name is already occupied on npm, so the project is prepared for scoped publishing.
+
 ## [0.5.0] - 2026-07-19
 
 ### Added

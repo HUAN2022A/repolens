@@ -3,6 +3,7 @@
 RepoLens exposes a stdio server command:
 
 ```bash
+npm install -g @huan2022a/repolens
 repolens-mcp
 ```
 

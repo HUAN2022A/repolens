@@ -51,7 +51,11 @@ async function main() {
     const repoMap = JSON.parse(await readFile(output, 'utf8'));
     if (repoMap.schemaVersion !== 1) throw new Error('Unexpected repo-map schema version from packed CLI');
 
-    const installedFiles = await readdir(path.join(tempRoot, 'node_modules', 'repolens'));
+    const packageJson = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
+    const installedPackagePath = packageJson.name.startsWith('@')
+      ? path.join(tempRoot, 'node_modules', ...packageJson.name.split('/'))
+      : path.join(tempRoot, 'node_modules', packageJson.name);
+    const installedFiles = await readdir(installedPackagePath);
     console.log(`Packed CLI test passed with repolens ${version.stdout.trim()}.`);
     console.log(`Installed package files: ${installedFiles.sort().join(', ')}`);
   } finally {

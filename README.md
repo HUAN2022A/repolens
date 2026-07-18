@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml/badge.svg)](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/HUAN2022A/repolens)](https://github.com/HUAN2022A/repolens/releases)
+[![npm](https://img.shields.io/npm/v/@huan2022a/repolens?label=npm)](https://www.npmjs.com/package/@huan2022a/repolens)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Give your AI coding agent the repo context it actually needs.
@@ -23,6 +24,15 @@ AI coding agents are powerful, but they still waste time and tokens reading the 
 
 RepoLens has no runtime dependencies and requires Node.js 18+.
 
+Install from npm after the package is published:
+
+```bash
+npm install -g @huan2022a/repolens
+repolens . --task "add GitHub OAuth login" --for codex
+```
+
+Or run from source:
+
 ```bash
 git clone https://github.com/HUAN2022A/repolens.git
 cd repolens
@@ -37,10 +47,11 @@ Analyze a public GitHub repository:
 node src/cli.js https://github.com/octocat/Hello-World --task "understand this repo"
 ```
 
-If installed as a package, the command is:
+The package exposes two commands:
 
 ```bash
 repolens . --task "fix payment webhook retries" --for codex
+repolens-mcp
 ```
 
 ## Output
@@ -133,6 +144,7 @@ The unit tests cover CLI validation, ignore matching, relevance scoring, and out
 - See [`docs/releases/v0.3.0.md`](docs/releases/v0.3.0.md) for the agent setup release notes.
 - See [`docs/releases/v0.4.0.md`](docs/releases/v0.4.0.md) for the symbol/import release notes.
 - See [`docs/releases/v0.5.0.md`](docs/releases/v0.5.0.md) for the latest release notes.
+- See [`docs/releases/v0.6.0.md`](docs/releases/v0.6.0.md) for npm publish-ready release notes.
 
 ## License
 

@@ -8,6 +8,12 @@ This demo shows the shape of a RepoLens context pack.
 node src/cli.js . --task "add GitHub OAuth login" --for codex --out examples/basic-context
 ```
 
+After npm installation, the equivalent command is:
+
+```bash
+repolens . --task "add GitHub OAuth login" --for codex --out examples/basic-context
+```
+
 ## Generated files
 
 ```txt
