@@ -42,6 +42,8 @@ function parseArgs(argv) {
     agent: 'generic',
     maxFiles: 800,
     outputMode: 'all',
+    jsonOnly: false,
+    markdownOnly: false,
   };
 
   const positional = [];
@@ -50,26 +52,36 @@ function parseArgs(argv) {
     if (arg === '--help' || arg === '-h') return { help: true };
     if (arg === '--version' || arg === '-v') return { version: true };
     if (arg === '--task') {
-      args.task = argv[++i] ?? '';
+      const value = argv[++i];
+      if (!value || value.startsWith('--')) throw new Error('--task requires a non-empty value');
+      args.task = value;
       continue;
     }
     if (arg === '--out') {
-      args.out = argv[++i] ?? '.repolens';
+      const value = argv[++i];
+      if (!value || value.startsWith('--')) throw new Error('--out requires a directory path');
+      args.out = value;
       continue;
     }
     if (arg === '--for') {
-      args.agent = argv[++i] ?? 'generic';
+      const value = argv[++i];
+      if (!value || value.startsWith('--')) throw new Error('--for requires an agent name');
+      args.agent = value;
       continue;
     }
     if (arg === '--max-files') {
-      args.maxFiles = Number.parseInt(argv[++i] ?? '800', 10);
+      const value = argv[++i];
+      if (!value || value.startsWith('--')) throw new Error('--max-files requires a positive integer');
+      args.maxFiles = Number.parseInt(value, 10);
       continue;
     }
     if (arg === '--json-only') {
+      args.jsonOnly = true;
       args.outputMode = 'json';
       continue;
     }
     if (arg === '--markdown-only') {
+      args.markdownOnly = true;
       args.outputMode = 'markdown';
       continue;
     }
@@ -80,6 +92,16 @@ function parseArgs(argv) {
   }
 
   if (positional[0]) args.target = positional[0];
+  if (positional.length > 1) throw new Error(`Expected one target path or URL, received ${positional.length}`);
+  if (!Number.isInteger(args.maxFiles) || args.maxFiles < 1) {
+    throw new Error('--max-files must be a positive integer');
+  }
+  if (args.jsonOnly && args.markdownOnly) {
+    throw new Error('--json-only and --markdown-only cannot be used together');
+  }
+  if (!['generic', 'codex', 'claude-code', 'cursor'].includes(args.agent)) {
+    throw new Error('--for must be one of: generic, codex, claude-code, cursor');
+  }
   return args;
 }
 

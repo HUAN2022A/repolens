@@ -48,6 +48,7 @@ RepoLens writes a `.repolens/` folder by default:
 - Produces an agent prompt tuned for generic agents, Codex, Claude Code, or Cursor.
 - Writes `repo-map.json` for tools, MCP servers, and future integrations.
 - Supports all-output, JSON-only, and Markdown-only generation modes.
+- Validates conflicting options and unsupported agent flavors before scanning.
 
 ## What comes next
 
