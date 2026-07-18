@@ -127,6 +127,7 @@ export async function scanRepository(root, options = {}) {
 
   return {
     root,
+    source: options.source ?? root,
     name: path.basename(root),
     scannedAt: new Date().toISOString(),
     stack: detectStack(files),

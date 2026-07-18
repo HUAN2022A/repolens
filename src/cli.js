@@ -4,6 +4,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { scanRepository } from './scanner.js';
 import { generateContextPack } from './generator.js';
+import { isGitHubUrl, resolveSource } from './source.js';
 
 const VERSION = '0.1.0';
 
@@ -17,6 +18,7 @@ Usage:
 
 Examples:
   repolens .
+  repolens https://github.com/user/repo
   repolens ./my-app --task "add GitHub OAuth login"
   repolens . --task "fix payment webhook retries" --for codex
 
@@ -80,29 +82,39 @@ async function main() {
     return;
   }
 
-  const root = path.resolve(args.target);
-  if (!existsSync(root)) {
-    throw new Error(`Target path does not exist: ${root}\nGitHub URL support is planned next; for this MVP, pass a local repository path.`);
-  }
+  const source = await resolveSource(args.target);
+  try {
+    const root = source.root;
+    if (!existsSync(root)) {
+      throw new Error(`Target path does not exist: ${root}`);
+    }
 
-  const outDir = path.resolve(root, args.out);
-  const repo = await scanRepository(root, { maxFiles: args.maxFiles });
-  const pack = generateContextPack(repo, {
-    task: args.task,
-    agent: args.agent,
-    outDir,
-  });
+    const outDir = isGitHubUrl(args.target)
+      ? path.resolve(process.cwd(), args.out)
+      : path.resolve(root, args.out);
+    const repo = await scanRepository(root, {
+      maxFiles: args.maxFiles,
+      source: source.displayTarget,
+    });
+    const pack = generateContextPack(repo, {
+      task: args.task,
+      agent: args.agent,
+      outDir,
+    });
 
-  await mkdir(outDir, { recursive: true });
-  await Promise.all(
-    Object.entries(pack.files).map(([fileName, content]) =>
-      writeFile(path.join(outDir, fileName), content, 'utf8')
-    )
-  );
+    await mkdir(outDir, { recursive: true });
+    await Promise.all(
+      Object.entries(pack.files).map(([fileName, content]) =>
+        writeFile(path.join(outDir, fileName), content, 'utf8')
+      )
+    );
 
-  console.log(`RepoLens generated ${Object.keys(pack.files).length} files in ${outDir}`);
-  for (const fileName of Object.keys(pack.files)) {
-    console.log(`- ${fileName}`);
+    console.log(`RepoLens generated ${Object.keys(pack.files).length} files in ${outDir}`);
+    for (const fileName of Object.keys(pack.files)) {
+      console.log(`- ${fileName}`);
+    }
+  } finally {
+    await source.cleanup();
   }
 }
 

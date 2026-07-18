@@ -107,6 +107,7 @@ This is an automatically generated first-pass map. Treat it as a navigation laye
 ## Project signals
 
 - Root: \`${repo.root}\`
+- Source: \`${repo.source ?? repo.root}\`
 - Detected stack: ${repo.stack.join(', ')}
 - Files indexed: ${repo.files.length}
 
