@@ -17,17 +17,17 @@ Task: add GitHub OAuth login
 ## Start with these files
 
 - `README.md`
+- `examples/basic-context/task-context.md`
+- `examples/basic-context/repo-map.json`
+- `examples/README.md`
 - `test/relevance.test.js`
 - `src/relevance.js`
-- `src/cli.js`
+- `docs/mcp.md`
 - `package.json`
-- `src/source.js`
 - `test/generator.test.js`
-- `.github/workflows/ci.yml`
-- `src/generator.js`
-- `src/gitignore.js`
-- `src/scanner.js`
-- `scripts/smoke-test.js`
+- `src/cli.js`
+- `docs/benchmark.md`
+- `src/source.js`
 
 ## Architecture constraints inferred from repository shape
 

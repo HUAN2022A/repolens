@@ -99,6 +99,7 @@ For a walkthrough, see [`docs/demo.md`](docs/demo.md). For reproducible baseline
 - Stack detection from manifests such as `package.json`, `pyproject.toml`, `go.mod`, and `Cargo.toml`.
 - File classification into config, entrypoint, business logic, UI, tests, docs, and source.
 - Task-aware relevance ranking with path, filename, content, role, and domain-hint signals.
+- Dependency-free symbol and import extraction for common JS/TS, Python, Go, Rust, and Java patterns.
 - Agent-flavored prompts for generic agents, Codex, Claude Code, and Cursor.
 - All-output, JSON-only, and Markdown-only generation modes.
 - Node test suite, smoke test, GitHub Actions CI, release notes, and example output.

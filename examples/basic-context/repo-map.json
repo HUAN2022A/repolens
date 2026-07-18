@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-18T15:54:23.185Z",
+  "generatedAt": "2026-07-18T16:23:17.623Z",
   "repository": {
     "name": "repolens",
     "root": "C:\\Users\\qzh\\Documents\\Codex\\2026-07-18\\new-chat\\outputs\\repolens",
@@ -12,27 +12,68 @@
   "task": "add GitHub OAuth login",
   "agent": "codex",
   "stats": {
-    "filesIndexed": 14,
+    "filesIndexed": 40,
     "roleCounts": {
-      "docs": 1,
+      "docs": 17,
       "config": 1,
-      "source": 7,
-      "test": 5
+      "source": 14,
+      "test": 8
     },
-    "gitignoreRulesLoaded": 8
+    "gitignoreRulesLoaded": 10,
+    "symbolsDetected": 178,
+    "importsDetected": 50,
+    "filesWithSymbols": 17,
+    "filesWithImports": 15
   },
   "relevantFiles": [
     {
       "path": "README.md",
       "role": "docs",
-      "size": 2611,
-      "score": 144,
+      "size": 5279,
+      "score": 186,
+      "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"oauth\"",
+        "content mentions \"login\"",
+        "content mentions \"auth\""
+      ]
+    },
+    {
+      "path": "examples/basic-context/task-context.md",
+      "role": "docs",
+      "size": 13115,
+      "score": 180,
       "reasons": [
         "content mentions \"github\"",
         "content mentions \"oauth\"",
         "content mentions \"login\"",
         "content mentions \"auth\"",
-        "content mentions \"user\""
+        "content mentions \"session\""
+      ]
+    },
+    {
+      "path": "examples/basic-context/repo-map.json",
+      "role": "source",
+      "size": 5525,
+      "score": 156,
+      "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"oauth\"",
+        "content mentions \"login\"",
+        "content mentions \"auth\"",
+        "content mentions \"session\""
+      ]
+    },
+    {
+      "path": "examples/README.md",
+      "role": "docs",
+      "size": 239,
+      "score": 114,
+      "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"oauth\"",
+        "content mentions \"login\"",
+        "content mentions \"auth\""
       ]
     },
     {
@@ -62,10 +103,44 @@
       ]
     },
     {
+      "path": "docs/mcp.md",
+      "role": "docs",
+      "size": 1908,
+      "score": 78,
+      "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"oauth\"",
+        "content mentions \"login\"",
+        "content mentions \"auth\""
+      ]
+    },
+    {
+      "path": "package.json",
+      "role": "config",
+      "size": 973,
+      "score": 74,
+      "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"auth\""
+      ]
+    },
+    {
+      "path": "test/generator.test.js",
+      "role": "test",
+      "size": 1837,
+      "score": 66,
+      "reasons": [
+        "content mentions \"oauth\"",
+        "content mentions \"login\"",
+        "content mentions \"auth\"",
+        "content mentions \"session\""
+      ]
+    },
+    {
       "path": "src/cli.js",
       "role": "source",
-      "size": 4740,
-      "score": 63,
+      "size": 3924,
+      "score": 51,
       "reasons": [
         "content mentions \"github\"",
         "content mentions \"oauth\"",
@@ -75,11 +150,14 @@
       ]
     },
     {
-      "path": "package.json",
-      "role": "config",
-      "size": 527,
-      "score": 56,
+      "path": "docs/benchmark.md",
+      "role": "docs",
+      "size": 1626,
+      "score": 48,
       "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"oauth\"",
+        "content mentions \"login\"",
         "content mentions \"auth\""
       ]
     },
@@ -93,178 +171,1499 @@
       ]
     },
     {
-      "path": "test/generator.test.js",
-      "role": "test",
-      "size": 1476,
-      "score": 42,
+      "path": "src/mcp.js",
+      "role": "source",
+      "size": 4727,
+      "score": 39,
       "reasons": [
+        "content mentions \"github\""
+      ]
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "role": "source",
+      "size": 191,
+      "score": 31,
+      "reasons": [
+        "path matches \"github\"",
+        "content mentions \"github\""
+      ]
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "role": "source",
+      "size": 714,
+      "score": 31,
+      "reasons": [
+        "path matches \"github\"",
+        "content mentions \"user\""
+      ]
+    },
+    {
+      "path": "docs/agent-setup.md",
+      "role": "docs",
+      "size": 1957,
+      "score": 30,
+      "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"auth\"",
+        "content mentions \"user\""
+      ]
+    },
+    {
+      "path": "examples/basic-context/agent-prompt.md",
+      "role": "docs",
+      "size": 1194,
+      "score": 30,
+      "reasons": [
+        "content mentions \"github\"",
         "content mentions \"oauth\"",
         "content mentions \"login\"",
         "content mentions \"auth\""
       ]
     },
     {
-      "path": ".github/workflows/ci.yml",
-      "role": "source",
-      "size": 569,
-      "score": 25,
-      "reasons": [
-        "path matches \"github\""
-      ]
-    },
-    {
-      "path": "src/generator.js",
-      "role": "source",
-      "size": 8419,
-      "score": 15,
-      "reasons": [
-        "high structural relevance"
-      ]
-    },
-    {
-      "path": "src/gitignore.js",
-      "role": "source",
-      "size": 1967,
-      "score": 15,
-      "reasons": [
-        "high structural relevance"
-      ]
-    },
-    {
-      "path": "src/scanner.js",
-      "role": "source",
-      "size": 5784,
-      "score": 15,
-      "reasons": [
-        "high structural relevance"
-      ]
-    },
-    {
-      "path": "scripts/smoke-test.js",
+      "path": "test/analyzer.test.js",
       "role": "test",
-      "size": 1701,
-      "score": 0,
+      "size": 1390,
+      "score": 30,
       "reasons": [
-        "high structural relevance"
-      ]
-    },
-    {
-      "path": "test/cli.test.js",
-      "role": "test",
-      "size": 1201,
-      "score": 0,
-      "reasons": [
-        "high structural relevance"
-      ]
-    },
-    {
-      "path": "test/gitignore.test.js",
-      "role": "test",
-      "size": 955,
-      "score": 0,
-      "reasons": [
-        "high structural relevance"
+        "content mentions \"user\""
       ]
     }
   ],
   "files": [
     {
+      "path": "examples/README.md",
+      "role": "docs",
+      "size": 239,
+      "extension": ".md",
+      "score": 90,
+      "symbols": [],
+      "imports": []
+    },
+    {
       "path": "README.md",
       "role": "docs",
-      "size": 2611,
+      "size": 5279,
       "extension": ".md",
-      "score": 90
+      "score": 90,
+      "symbols": [],
+      "imports": []
     },
     {
       "path": "package.json",
       "role": "config",
-      "size": 527,
+      "size": 973,
       "extension": ".json",
-      "score": 50
+      "score": 50,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "src/analyzer.js",
+      "role": "source",
+      "size": 4099,
+      "extension": ".js",
+      "score": 15,
+      "symbols": [
+        {
+          "name": "lineForIndex",
+          "kind": "function",
+          "line": 28
+        },
+        {
+          "name": "dedupe",
+          "kind": "function",
+          "line": 32
+        },
+        {
+          "name": "analyzeFile",
+          "kind": "function",
+          "line": 44
+        },
+        {
+          "name": "analyzeRepository",
+          "kind": "function",
+          "line": 77
+        },
+        {
+          "name": "MAX_SYMBOLS_PER_FILE",
+          "kind": "const",
+          "line": 1
+        },
+        {
+          "name": "MAX_IMPORTS_PER_FILE",
+          "kind": "const",
+          "line": 2
+        },
+        {
+          "name": "SYMBOL_PATTERNS",
+          "kind": "const",
+          "line": 4
+        },
+        {
+          "name": "IMPORT_PATTERNS",
+          "kind": "const",
+          "line": 18
+        },
+        {
+          "name": "seen",
+          "kind": "const",
+          "line": 33
+        },
+        {
+          "name": "result",
+          "kind": "const",
+          "line": 34
+        },
+        {
+          "name": "key",
+          "kind": "const",
+          "line": 36
+        },
+        {
+          "name": "symbols",
+          "kind": "const",
+          "line": 45
+        },
+        {
+          "name": "imports",
+          "kind": "const",
+          "line": 46
+        },
+        {
+          "name": "extension",
+          "kind": "const",
+          "line": 47
+        },
+        {
+          "name": "filesWithSymbols",
+          "kind": "const",
+          "line": 80
+        },
+        {
+          "name": "filesWithImports",
+          "kind": "const",
+          "line": 81
+        },
+        {
+          "name": "analyzedFiles",
+          "kind": "const",
+          "line": 83
+        },
+        {
+          "name": "analysis",
+          "kind": "const",
+          "line": 84
+        }
+      ],
+      "imports": []
     },
     {
       "path": "src/cli.js",
       "role": "source",
-      "size": 4740,
+      "size": 3924,
       "extension": ".js",
-      "score": 15
+      "score": 15,
+      "symbols": [
+        {
+          "name": "printHelp",
+          "kind": "function",
+          "line": 6
+        },
+        {
+          "name": "parseArgs",
+          "kind": "function",
+          "line": 32
+        },
+        {
+          "name": "main",
+          "kind": "function",
+          "line": 103
+        },
+        {
+          "name": "VERSION",
+          "kind": "const",
+          "line": 4
+        },
+        {
+          "name": "args",
+          "kind": "const",
+          "line": 33
+        },
+        {
+          "name": "positional",
+          "kind": "const",
+          "line": 44
+        },
+        {
+          "name": "arg",
+          "kind": "const",
+          "line": 46
+        },
+        {
+          "name": "value",
+          "kind": "const",
+          "line": 50
+        },
+        {
+          "name": "value",
+          "kind": "const",
+          "line": 56
+        },
+        {
+          "name": "value",
+          "kind": "const",
+          "line": 62
+        },
+        {
+          "name": "value",
+          "kind": "const",
+          "line": 68
+        },
+        {
+          "name": "args",
+          "kind": "const",
+          "line": 104
+        }
+      ],
+      "imports": [
+        {
+          "source": "./context.js"
+        }
+      ]
+    },
+    {
+      "path": "src/context.js",
+      "role": "source",
+      "size": 1375,
+      "extension": ".js",
+      "score": 15,
+      "symbols": [
+        {
+          "name": "buildContextPack",
+          "kind": "function",
+          "line": 8
+        },
+        {
+          "name": "writeContextPack",
+          "kind": "function",
+          "line": 37
+        },
+        {
+          "name": "target",
+          "kind": "const",
+          "line": 9
+        },
+        {
+          "name": "source",
+          "kind": "const",
+          "line": 10
+        },
+        {
+          "name": "root",
+          "kind": "const",
+          "line": 12
+        },
+        {
+          "name": "outDir",
+          "kind": "const",
+          "line": 17
+        },
+        {
+          "name": "repo",
+          "kind": "const",
+          "line": 20
+        },
+        {
+          "name": "pack",
+          "kind": "const",
+          "line": 24
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:fs"
+        },
+        {
+          "source": "node:fs/promises"
+        },
+        {
+          "source": "node:path"
+        },
+        {
+          "source": "./scanner.js"
+        },
+        {
+          "source": "./generator.js"
+        },
+        {
+          "source": "./source.js"
+        }
+      ]
     },
     {
       "path": "src/generator.js",
       "role": "source",
-      "size": 8419,
+      "size": 9721,
       "extension": ".js",
-      "score": 15
+      "score": 15,
+      "symbols": [
+        {
+          "name": "lines",
+          "kind": "function",
+          "line": 14
+        },
+        {
+          "name": "topFiles",
+          "kind": "function",
+          "line": 18
+        },
+        {
+          "name": "groupByRole",
+          "kind": "function",
+          "line": 22
+        },
+        {
+          "name": "taskRelevantFiles",
+          "kind": "function",
+          "line": 30
+        },
+        {
+          "name": "inferCommands",
+          "kind": "function",
+          "line": 41
+        },
+        {
+          "name": "generateOverview",
+          "kind": "function",
+          "line": 61
+        },
+        {
+          "name": "generateArchitecture",
+          "kind": "function",
+          "line": 90
+        },
+        {
+          "name": "ROLE_LABELS",
+          "kind": "const",
+          "line": 4
+        },
+        {
+          "name": "relevance",
+          "kind": "const",
+          "line": 34
+        },
+        {
+          "name": "packageJson",
+          "kind": "const",
+          "line": 42
+        },
+        {
+          "name": "commands",
+          "kind": "const",
+          "line": 43
+        },
+        {
+          "name": "parsed",
+          "kind": "const",
+          "line": 46
+        },
+        {
+          "name": "grouped",
+          "kind": "const",
+          "line": 62
+        },
+        {
+          "name": "grouped",
+          "kind": "const",
+          "line": 91
+        },
+        {
+          "name": "commands",
+          "kind": "const",
+          "line": 92
+        },
+        {
+          "name": "symbolRichFiles",
+          "kind": "const",
+          "line": 93
+        },
+        {
+          "name": "importRichFiles",
+          "kind": "const",
+          "line": 96
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:path"
+        },
+        {
+          "source": "./relevance.js"
+        }
+      ]
     },
     {
       "path": "src/gitignore.js",
       "role": "source",
       "size": 1967,
       "extension": ".js",
-      "score": 15
+      "score": 15,
+      "symbols": [
+        {
+          "name": "escapeRegex",
+          "kind": "function",
+          "line": 4
+        },
+        {
+          "name": "globToRegex",
+          "kind": "function",
+          "line": 8
+        },
+        {
+          "name": "parseLine",
+          "kind": "function",
+          "line": 17
+        },
+        {
+          "name": "loadGitignore",
+          "kind": "function",
+          "line": 36
+        },
+        {
+          "name": "isIgnoredByGitignore",
+          "kind": "function",
+          "line": 45
+        },
+        {
+          "name": "normalized",
+          "kind": "const",
+          "line": 9
+        },
+        {
+          "name": "regex",
+          "kind": "const",
+          "line": 10
+        },
+        {
+          "name": "trimmed",
+          "kind": "const",
+          "line": 18
+        },
+        {
+          "name": "anchored",
+          "kind": "const",
+          "line": 22
+        },
+        {
+          "name": "directoryOnly",
+          "kind": "const",
+          "line": 23
+        },
+        {
+          "name": "pattern",
+          "kind": "const",
+          "line": 24
+        },
+        {
+          "name": "content",
+          "kind": "const",
+          "line": 38
+        },
+        {
+          "name": "normalized",
+          "kind": "const",
+          "line": 47
+        },
+        {
+          "name": "segments",
+          "kind": "const",
+          "line": 48
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:fs/promises"
+        },
+        {
+          "source": "node:path"
+        }
+      ]
+    },
+    {
+      "path": "src/mcp.js",
+      "role": "source",
+      "size": 4727,
+      "extension": ".js",
+      "score": 15,
+      "symbols": [
+        {
+          "name": "send",
+          "kind": "function",
+          "line": 51
+        },
+        {
+          "name": "textContent",
+          "kind": "function",
+          "line": 55
+        },
+        {
+          "name": "callTool",
+          "kind": "function",
+          "line": 59
+        },
+        {
+          "name": "handle",
+          "kind": "function",
+          "line": 94
+        },
+        {
+          "name": "serverInfo",
+          "kind": "const",
+          "line": 4
+        },
+        {
+          "name": "tools",
+          "kind": "const",
+          "line": 6
+        },
+        {
+          "name": "limit",
+          "kind": "const",
+          "line": 79
+        },
+        {
+          "name": "repoMap",
+          "kind": "const",
+          "line": 81
+        }
+      ],
+      "imports": [
+        {
+          "source": "./context.js"
+        }
+      ]
     },
     {
       "path": "src/relevance.js",
       "role": "source",
       "size": 3346,
       "extension": ".js",
-      "score": 15
+      "score": 15,
+      "symbols": [
+        {
+          "name": "taskKeywords",
+          "kind": "function",
+          "line": 17
+        },
+        {
+          "name": "expandedKeywords",
+          "kind": "function",
+          "line": 25
+        },
+        {
+          "name": "countOccurrences",
+          "kind": "function",
+          "line": 35
+        },
+        {
+          "name": "scoreFileForTask",
+          "kind": "function",
+          "line": 45
+        },
+        {
+          "name": "STOP_WORDS",
+          "kind": "const",
+          "line": 1
+        },
+        {
+          "name": "DOMAIN_HINTS",
+          "kind": "const",
+          "line": 6
+        },
+        {
+          "name": "expanded",
+          "kind": "const",
+          "line": 26
+        },
+        {
+          "name": "keywords",
+          "kind": "const",
+          "line": 46
+        },
+        {
+          "name": "pathText",
+          "kind": "const",
+          "line": 51
+        },
+        {
+          "name": "nameText",
+          "kind": "const",
+          "line": 52
+        },
+        {
+          "name": "previewText",
+          "kind": "const",
+          "line": 53
+        },
+        {
+          "name": "reasons",
+          "kind": "const",
+          "line": 54
+        },
+        {
+          "name": "occurrences",
+          "kind": "const",
+          "line": 66
+        }
+      ],
+      "imports": []
     },
     {
       "path": "src/scanner.js",
       "role": "source",
-      "size": 5784,
+      "size": 5991,
       "extension": ".js",
-      "score": 15
+      "score": 15,
+      "symbols": [
+        {
+          "name": "normalize",
+          "kind": "function",
+          "line": 26
+        },
+        {
+          "name": "isProbablySource",
+          "kind": "function",
+          "line": 30
+        },
+        {
+          "name": "detectRole",
+          "kind": "function",
+          "line": 34
+        },
+        {
+          "name": "scoreFile",
+          "kind": "function",
+          "line": 46
+        },
+        {
+          "name": "readPreview",
+          "kind": "function",
+          "line": 60
+        },
+        {
+          "name": "walk",
+          "kind": "function",
+          "line": 65
+        },
+        {
+          "name": "DEFAULT_IGNORE_DIRS",
+          "kind": "const",
+          "line": 6
+        },
+        {
+          "name": "BINARY_EXTENSIONS",
+          "kind": "const",
+          "line": 13
+        },
+        {
+          "name": "IMPORTANT_FILENAMES",
+          "kind": "const",
+          "line": 19
+        },
+        {
+          "name": "p",
+          "kind": "const",
+          "line": 35
+        },
+        {
+          "name": "base",
+          "kind": "const",
+          "line": 36
+        },
+        {
+          "name": "p",
+          "kind": "const",
+          "line": 47
+        },
+        {
+          "name": "base",
+          "kind": "const",
+          "line": 48
+        },
+        {
+          "name": "text",
+          "kind": "const",
+          "line": 61
+        },
+        {
+          "name": "entries",
+          "kind": "const",
+          "line": 67
+        },
+        {
+          "name": "fullPath",
+          "kind": "const",
+          "line": 72
+        },
+        {
+          "name": "relativePath",
+          "kind": "const",
+          "line": 73
+        },
+        {
+          "name": "extension",
+          "kind": "const",
+          "line": 83
+        },
+        {
+          "name": "info",
+          "kind": "const",
+          "line": 87
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:fs/promises"
+        },
+        {
+          "source": "node:path"
+        },
+        {
+          "source": "./analyzer.js"
+        },
+        {
+          "source": "./gitignore.js"
+        }
+      ]
     },
     {
       "path": "src/source.js",
       "role": "source",
       "size": 1913,
       "extension": ".js",
-      "score": 15
+      "score": 15,
+      "symbols": [
+        {
+          "name": "isGitHubUrl",
+          "kind": "function",
+          "line": 8
+        },
+        {
+          "name": "toSshUrl",
+          "kind": "function",
+          "line": 12
+        },
+        {
+          "name": "run",
+          "kind": "function",
+          "line": 18
+        },
+        {
+          "name": "resolveSource",
+          "kind": "function",
+          "line": 41
+        },
+        {
+          "name": "GITHUB_REPO_PATTERN",
+          "kind": "const",
+          "line": 6
+        },
+        {
+          "name": "match",
+          "kind": "const",
+          "line": 13
+        },
+        {
+          "name": "child",
+          "kind": "const",
+          "line": 20
+        },
+        {
+          "name": "tempRoot",
+          "kind": "const",
+          "line": 50
+        },
+        {
+          "name": "repoDir",
+          "kind": "const",
+          "line": 51
+        },
+        {
+          "name": "sshUrl",
+          "kind": "const",
+          "line": 55
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:fs/promises"
+        },
+        {
+          "source": "node:os"
+        },
+        {
+          "source": "node:path"
+        },
+        {
+          "source": "node:child_process"
+        }
+      ]
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "role": "source",
+      "size": 923,
+      "extension": ".yml",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "role": "source",
+      "size": 191,
+      "extension": ".yml",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "role": "source",
+      "size": 714,
+      "extension": ".yml",
+      "score": 0,
+      "symbols": [],
+      "imports": []
     },
     {
       "path": ".github/workflows/ci.yml",
       "role": "source",
-      "size": 569,
+      "size": 635,
       "extension": ".yml",
-      "score": 0
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "CHANGELOG.md",
+      "role": "docs",
+      "size": 1386,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "role": "docs",
+      "size": 677,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "role": "docs",
+      "size": 1135,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "docs/agent-setup.md",
+      "role": "docs",
+      "size": 1957,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "docs/benchmark.md",
+      "role": "docs",
+      "size": 1626,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "docs/demo.md",
+      "role": "docs",
+      "size": 1179,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "docs/mcp.md",
+      "role": "docs",
+      "size": 1908,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "docs/releases/v0.1.0.md",
+      "role": "docs",
+      "size": 1097,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "docs/releases/v0.2.0.md",
+      "role": "docs",
+      "size": 1041,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "docs/releases/v0.3.0.md",
+      "role": "docs",
+      "size": 999,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "examples/basic-context/agent-prompt.md",
+      "role": "docs",
+      "size": 1194,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "examples/basic-context/architecture.md",
+      "role": "docs",
+      "size": 1259,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "examples/basic-context/overview.md",
+      "role": "docs",
+      "size": 1382,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "examples/basic-context/repo-map.json",
+      "role": "source",
+      "size": 5525,
+      "extension": ".json",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "examples/basic-context/task-context.md",
+      "role": "docs",
+      "size": 13115,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "scripts/pack-test.js",
+      "role": "test",
+      "size": 2870,
+      "extension": ".js",
+      "score": 0,
+      "symbols": [
+        {
+          "name": "run",
+          "kind": "function",
+          "line": 12
+        },
+        {
+          "name": "main",
+          "kind": "function",
+          "line": 33
+        },
+        {
+          "name": "root",
+          "kind": "const",
+          "line": 8
+        },
+        {
+          "name": "npmCommand",
+          "kind": "const",
+          "line": 9
+        },
+        {
+          "name": "npxCommand",
+          "kind": "const",
+          "line": 10
+        },
+        {
+          "name": "child",
+          "kind": "const",
+          "line": 14
+        },
+        {
+          "name": "tempRoot",
+          "kind": "const",
+          "line": 34
+        },
+        {
+          "name": "pack",
+          "kind": "const",
+          "line": 36
+        },
+        {
+          "name": "tarball",
+          "kind": "const",
+          "line": 37
+        },
+        {
+          "name": "tarballPath",
+          "kind": "const",
+          "line": 39
+        },
+        {
+          "name": "version",
+          "kind": "const",
+          "line": 45
+        },
+        {
+          "name": "output",
+          "kind": "const",
+          "line": 49
+        },
+        {
+          "name": "repoMap",
+          "kind": "const",
+          "line": 51
+        },
+        {
+          "name": "installedFiles",
+          "kind": "const",
+          "line": 54
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:fs/promises"
+        },
+        {
+          "source": "node:fs"
+        },
+        {
+          "source": "node:os"
+        },
+        {
+          "source": "node:child_process"
+        },
+        {
+          "source": "node:path"
+        }
+      ]
     },
     {
       "path": "scripts/smoke-test.js",
       "role": "test",
-      "size": 1701,
+      "size": 1994,
       "extension": ".js",
-      "score": 0
+      "score": 0,
+      "symbols": [
+        {
+          "name": "run",
+          "kind": "function",
+          "line": 10
+        },
+        {
+          "name": "main",
+          "kind": "function",
+          "line": 21
+        },
+        {
+          "name": "root",
+          "kind": "const",
+          "line": 7
+        },
+        {
+          "name": "outDir",
+          "kind": "const",
+          "line": 8
+        },
+        {
+          "name": "child",
+          "kind": "const",
+          "line": 12
+        },
+        {
+          "name": "expectedFiles",
+          "kind": "const",
+          "line": 25
+        },
+        {
+          "name": "fullPath",
+          "kind": "const",
+          "line": 27
+        },
+        {
+          "name": "repoMap",
+          "kind": "const",
+          "line": 31
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:fs/promises"
+        },
+        {
+          "source": "node:fs"
+        },
+        {
+          "source": "node:child_process"
+        },
+        {
+          "source": "node:path"
+        }
+      ]
+    },
+    {
+      "path": "SECURITY.md",
+      "role": "docs",
+      "size": 748,
+      "extension": ".md",
+      "score": 0,
+      "symbols": [],
+      "imports": []
+    },
+    {
+      "path": "test/analyzer.test.js",
+      "role": "test",
+      "size": 1390,
+      "extension": ".js",
+      "score": 0,
+      "symbols": [
+        {
+          "name": "loadUser",
+          "kind": "function",
+          "line": 12
+        },
+        {
+          "name": "RepoLens",
+          "kind": "class",
+          "line": 27
+        },
+        {
+          "name": "User",
+          "kind": "interface",
+          "line": 10
+        },
+        {
+          "name": "Role",
+          "kind": "type",
+          "line": 11
+        },
+        {
+          "name": "result",
+          "kind": "const",
+          "line": 6
+        },
+        {
+          "name": "userStore",
+          "kind": "const",
+          "line": 13
+        },
+        {
+          "name": "result",
+          "kind": "const",
+          "line": 23
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:test"
+        },
+        {
+          "source": "node:assert/strict"
+        },
+        {
+          "source": "../src/analyzer.js"
+        },
+        {
+          "source": "node:fs/promises"
+        },
+        {
+          "source": "./helper"
+        }
+      ]
     },
     {
       "path": "test/cli.test.js",
       "role": "test",
       "size": 1201,
       "extension": ".js",
-      "score": 0
+      "score": 0,
+      "symbols": [
+        {
+          "name": "runCli",
+          "kind": "function",
+          "line": 5
+        },
+        {
+          "name": "child",
+          "kind": "const",
+          "line": 7
+        },
+        {
+          "name": "result",
+          "kind": "const",
+          "line": 17
+        },
+        {
+          "name": "result",
+          "kind": "const",
+          "line": 23
+        },
+        {
+          "name": "result",
+          "kind": "const",
+          "line": 29
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:test"
+        },
+        {
+          "source": "node:assert/strict"
+        },
+        {
+          "source": "node:child_process"
+        }
+      ]
     },
     {
       "path": "test/generator.test.js",
       "role": "test",
-      "size": 1476,
+      "size": 1837,
       "extension": ".js",
-      "score": 0
+      "score": 0,
+      "symbols": [
+        {
+          "name": "login",
+          "kind": "function",
+          "line": 16
+        },
+        {
+          "name": "repo",
+          "kind": "const",
+          "line": 5
+        },
+        {
+          "name": "pack",
+          "kind": "const",
+          "line": 21
+        },
+        {
+          "name": "pack",
+          "kind": "const",
+          "line": 32
+        },
+        {
+          "name": "parsed",
+          "kind": "const",
+          "line": 34
+        },
+        {
+          "name": "pack",
+          "kind": "const",
+          "line": 41
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:test"
+        },
+        {
+          "source": "node:assert/strict"
+        },
+        {
+          "source": "../src/generator.js"
+        }
+      ]
     },
     {
       "path": "test/gitignore.test.js",
       "role": "test",
       "size": 955,
       "extension": ".js",
-      "score": 0
+      "score": 0,
+      "symbols": [
+        {
+          "name": "rules",
+          "kind": "const",
+          "line": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:test"
+        },
+        {
+          "source": "node:assert/strict"
+        },
+        {
+          "source": "../src/gitignore.js"
+        }
+      ]
+    },
+    {
+      "path": "test/mcp.test.js",
+      "role": "test",
+      "size": 2439,
+      "extension": ".js",
+      "score": 0,
+      "symbols": [
+        {
+          "name": "startServer",
+          "kind": "function",
+          "line": 6
+        },
+        {
+          "name": "sendAndWait",
+          "kind": "function",
+          "line": 20
+        },
+        {
+          "name": "child",
+          "kind": "const",
+          "line": 7
+        },
+        {
+          "name": "lines",
+          "kind": "const",
+          "line": 10
+        },
+        {
+          "name": "previousLength",
+          "kind": "const",
+          "line": 21
+        },
+        {
+          "name": "server",
+          "kind": "const",
+          "line": 31
+        },
+        {
+          "name": "initialized",
+          "kind": "const",
+          "line": 33
+        },
+        {
+          "name": "listed",
+          "kind": "const",
+          "line": 41
+        },
+        {
+          "name": "called",
+          "kind": "const",
+          "line": 48
+        },
+        {
+          "name": "repoMap",
+          "kind": "const",
+          "line": 57
+        },
+        {
+          "name": "relevant",
+          "kind": "const",
+          "line": 61
+        },
+        {
+          "name": "relevantPayload",
+          "kind": "const",
+          "line": 70
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:test"
+        },
+        {
+          "source": "node:assert/strict"
+        },
+        {
+          "source": "node:child_process"
+        },
+        {
+          "source": "node:events"
+        }
+      ]
     },
     {
       "path": "test/relevance.test.js",
       "role": "test",
       "size": 877,
       "extension": ".js",
-      "score": 0
+      "score": 0,
+      "symbols": [
+        {
+          "name": "createSession",
+          "kind": "function",
+          "line": 10
+        },
+        {
+          "name": "authFile",
+          "kind": "const",
+          "line": 6
+        },
+        {
+          "name": "unrelatedFile",
+          "kind": "const",
+          "line": 12
+        },
+        {
+          "name": "colors",
+          "kind": "const",
+          "line": 16
+        },
+        {
+          "name": "authScore",
+          "kind": "const",
+          "line": 19
+        },
+        {
+          "name": "unrelatedScore",
+          "kind": "const",
+          "line": 20
+        }
+      ],
+      "imports": [
+        {
+          "source": "node:test"
+        },
+        {
+          "source": "node:assert/strict"
+        },
+        {
+          "source": "../src/relevance.js"
+        }
+      ]
     }
   ]
 }

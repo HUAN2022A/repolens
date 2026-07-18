@@ -21,6 +21,8 @@ Observed output from `examples/basic-context/repo-map.json`:
 | Config files | 1 |
 | Source files | 7 |
 | Test files | 5 |
+| Symbols detected | See `repo-map.json` |
+| Imports detected | See `repo-map.json` |
 
 ## Reproduce locally
 
@@ -41,5 +43,6 @@ node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('.repolens-b
 ## Current limitations
 
 - The current scanner uses heuristics rather than AST-level symbol graphs.
+- Symbol and import extraction is best-effort and intentionally dependency-free.
 - File relevance is based on path, filename, role, content mentions, and domain hints.
 - Token savings are not yet benchmarked against Repomix, full dumps, or agent-native search.

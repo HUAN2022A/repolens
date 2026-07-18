@@ -90,6 +90,12 @@ ${Object.entries(grouped)
 function generateArchitecture(repo) {
   const grouped = groupByRole(repo.files);
   const commands = inferCommands(repo);
+  const symbolRichFiles = repo.files
+    .filter((file) => file.symbols?.length)
+    .slice(0, 10);
+  const importRichFiles = repo.files
+    .filter((file) => file.imports?.length)
+    .slice(0, 10);
   return `# Architecture Map
 
 This is an automatically generated first-pass map. Treat it as a navigation layer for humans and AI coding agents, not as a replacement for reading source code.
@@ -101,12 +107,22 @@ This is an automatically generated first-pass map. Treat it as a navigation laye
 - Detected stack: ${repo.stack.join(', ')}
 - Files indexed: ${repo.files.length}
 - .gitignore rules loaded: ${repo.gitignoreRules?.length ?? 0}
+- Symbols detected: ${repo.analysis?.symbolCount ?? 0}
+- Imports detected: ${repo.analysis?.importCount ?? 0}
 
 ## Likely layers
 
 ${Object.entries(grouped)
   .map(([role, files]) => `### ${ROLE_LABELS[role] ?? role}\n\n${files.slice(0, 10).map((file) => `- \`${file.path}\``).join('\n')}`)
   .join('\n\n')}
+
+## Symbol hotspots
+
+${symbolRichFiles.length ? symbolRichFiles.map((file) => `- \`${file.path}\` — ${file.symbols.slice(0, 5).map((symbol) => `${symbol.kind} ${symbol.name}`).join(', ')}`).join('\n') : '- None detected'}
+
+## Import hotspots
+
+${importRichFiles.length ? importRichFiles.map((file) => `- \`${file.path}\` — ${file.imports.slice(0, 5).map((item) => item.source).join(', ')}`).join('\n') : '- None detected'}
 
 ## Suggested verification commands
 
@@ -134,7 +150,7 @@ ${relevant.map((file) => `- \`${file.path}\` — ${ROLE_LABELS[file.role] ?? fil
 
 ## Why these files matter
 
-${relevant.slice(0, 10).map((file) => `### \`${file.path}\`\n\nRole: ${ROLE_LABELS[file.role] ?? file.role}\n\nPreview:\n\n\`\`\`${path.extname(file.path).slice(1) || 'text'}\n${file.preview.slice(0, 1200).trim()}\n\`\`\``).join('\n\n')}
+${relevant.slice(0, 10).map((file) => `### \`${file.path}\`\n\nRole: ${ROLE_LABELS[file.role] ?? file.role}\n\nSymbols: ${file.symbols?.length ? file.symbols.slice(0, 8).map((symbol) => `${symbol.kind} ${symbol.name}`).join(', ') : 'None detected'}\n\nImports: ${file.imports?.length ? file.imports.slice(0, 8).map((item) => item.source).join(', ') : 'None detected'}\n\nPreview:\n\n\`\`\`${path.extname(file.path).slice(1) || 'text'}\n${file.preview.slice(0, 1200).trim()}\n\`\`\``).join('\n\n')}
 
 ## Suggested implementation path for an AI coding agent
 
@@ -226,6 +242,10 @@ export function generateContextPack(repo, options = {}) {
       filesIndexed: repo.files.length,
       roleCounts: repo.roleCounts,
       gitignoreRulesLoaded: repo.gitignoreRules?.length ?? 0,
+      symbolsDetected: repo.analysis?.symbolCount ?? 0,
+      importsDetected: repo.analysis?.importCount ?? 0,
+      filesWithSymbols: repo.analysis?.filesWithSymbols ?? 0,
+      filesWithImports: repo.analysis?.filesWithImports ?? 0,
     },
     relevantFiles,
     files: repo.files.map((file) => ({
@@ -234,6 +254,8 @@ export function generateContextPack(repo, options = {}) {
       size: file.size,
       extension: file.extension,
       score: file.score,
+      symbols: file.symbols ?? [],
+      imports: file.imports ?? [],
     })),
   };
   const markdownFiles = {

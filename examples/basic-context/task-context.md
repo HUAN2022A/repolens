@@ -4,6 +4,76 @@ Task: add GitHub OAuth login
 
 ## Most relevant files
 
+- `README.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
+- `examples/basic-context/task-context.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
+- `examples/basic-context/repo-map.json` — General source files; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
+- `examples/README.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
+- `test/relevance.test.js` — Tests and verification; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
+- `src/relevance.js` — General source files; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"; content mentions "user"
+- `docs/mcp.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
+- `package.json` — Configuration and project metadata; content mentions "github"; content mentions "auth"
+- `test/generator.test.js` — Tests and verification; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
+- `src/cli.js` — General source files; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "user"
+- `docs/benchmark.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
+- `src/source.js` — General source files; content mentions "github"
+- `src/mcp.js` — General source files; content mentions "github"
+- `.github/ISSUE_TEMPLATE/config.yml` — General source files; path matches "github"; content mentions "github"
+- `.github/ISSUE_TEMPLATE/feature_request.yml` — General source files; path matches "github"; content mentions "user"
+- `docs/agent-setup.md` — Documentation; content mentions "github"; content mentions "auth"; content mentions "user"
+- `examples/basic-context/agent-prompt.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"
+- `test/analyzer.test.js` — Tests and verification; content mentions "user"
+
+## Why these files matter
+
+### `README.md`
+
+Role: Documentation
+
+Symbols: None detected
+
+Imports: None detected
+
+Preview:
+
+```md
+# RepoLens
+
+[![CI](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml/badge.svg)](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/HUAN2022A/repolens)](https://github.com/HUAN2022A/repolens/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+Give your AI coding agent the repo context it actually needs.
+
+RepoLens turns a local project or public GitHub repository into a compact, task-aware context pack for Codex, Claude Code, Cursor, Gemini CLI, OpenCode, and other coding agents. Instead of dumping an entire codebase into an LLM, RepoLens finds high-signal files, explains why they matter, and writes agent-ready Markdown plus a machine-readable `repo-map.json`.
+
+## Why RepoLens?
+
+AI coding agents are powerful, but they still waste time and tokens reading the wrong files. RepoLens acts like a lightweight navigation layer before the agent starts editing:
+
+- find the files that matter for a task;
+- summarize the repository shape;
+- expose project conventions and likely verification commands;
+- produce a prompt you can paste directly into an agent;
+- emit JSON for future M
+```
+
+### `examples/basic-context/task-context.md`
+
+Role: Documentation
+
+Symbols: None detected
+
+Imports: None detected
+
+Preview:
+
+```md
+# Task Context
+
+Task: add GitHub OAuth login
+
+## Most relevant files
+
 - `README.md` — Documentation; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "user"
 - `test/relevance.test.js` — Tests and verification; content mentions "github"; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"
 - `src/relevance.js` — General source files; content mentions "oauth"; content mentions "login"; content mentions "auth"; content mentions "session"; content mentions "user"
@@ -13,69 +83,99 @@ Task: add GitHub OAuth login
 - `test/generator.test.js` — Tests and verification; content mentions "oauth"; content mentions "login"; content mentions "auth"
 - `.github/workflows/ci.yml` — General source files; path matches "github"
 - `src/generator.js` — General source files; high structural relevance
-- `src/gitignore.js` — General source files; high structural relevance
-- `src/scanner.js` — General source files; high structural relevance
-- `scripts/smoke-test.js` — Tests and verification; high structural relevance
-- `test/cli.test.js` — Tests and verification; high structural relevance
-- `test/gitignore.test.js` — Tests and verification; high structural relevance
+- `src/gitignore.js` — G
+```
 
-## Why these files matter
+### `examples/basic-context/repo-map.json`
 
-### `README.md`
+Role: General source files
+
+Symbols: None detected
+
+Imports: None detected
+
+Preview:
+
+```json
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T15:54:23.185Z",
+  "repository": {
+    "name": "repolens",
+    "root": "C:\\Users\\qzh\\Documents\\Codex\\2026-07-18\\new-chat\\outputs\\repolens",
+    "source": ".",
+    "stack": [
+      "Node.js / JavaScript"
+    ]
+  },
+  "task": "add GitHub OAuth login",
+  "agent": "codex",
+  "stats": {
+    "filesIndexed": 14,
+    "roleCounts": {
+      "docs": 1,
+      "config": 1,
+      "source": 7,
+      "test": 5
+    },
+    "gitignoreRulesLoaded": 8
+  },
+  "relevantFiles": [
+    {
+      "path": "README.md",
+      "role": "docs",
+      "size": 2611,
+      "score": 144,
+      "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"oauth\"",
+        "content mentions \"login\"",
+        "content mentions \"auth\"",
+        "content mentions \"user\""
+      ]
+    },
+    {
+      "path": "test/relevance.test.js",
+      "role": "test",
+      "size": 877,
+      "score": 108,
+      "reasons": [
+        "content mentions \"github\"",
+        "content mentions \"oauth\"",
+        "content mentions \"login\"",
+        "content mentions \"auth\"",
+        "content mentions \"session\""
+      ]
+    },
+    {
+      "path": "src/relev
+```
+
+### `examples/README.md`
 
 Role: Documentation
+
+Symbols: None detected
+
+Imports: None detected
 
 Preview:
 
 ```md
-# RepoLens
+# Examples
 
-[![CI](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml/badge.svg)](https://github.com/HUAN2022A/repolens/actions/workflows/ci.yml)
+This directory contains generated RepoLens context packs that show what the CLI produces.
 
-RepoLens generates compact, agent-ready context packs for AI coding agents.
-
-Instead of dumping an entire repository into a model, RepoLens scans the project, finds high-signal files, infers the repository shape, and writes Markdown context that can be pasted into Codex, Claude Code, Cursor, Gemini CLI, OpenCode, or another coding agent.
-
-## Install / Run
-
-This MVP has no runtime dependencies and requires Node.js 18+.
-
-```bash
-node src/cli.js .
-node src/cli.js https://github.com/user/repo
-node src/cli.js . --task "add GitHub OAuth login" --for codex
-node src/cli.js . --json-only
-```
-
-If installed as a package, the command is:
-
-```bash
-repolens . --task "fix payment webhook retries"
-```
-
-## Output
-
-RepoLens writes a `.repolens/` folder by default:
-
-~~~txt
-.repolens/
-  overview.md
-  architecture.md
-  task-context.md
-  agent-prompt.md
-  repo-map.json
-~~~
-
-## What it does today
-
-- Scans a local repository while ignoring dependency/build/cache directories.
-- Scans a local repository or a public GitHub repository URL.
-- Loads commo
+- [`basic-context`](basic-context): generated from this repository with the task `add GitHub OAuth login` and the `codex` agent flavor.
 ```
 
 ### `test/relevance.test.js`
 
 Role: Tests and verification
+
+Symbols: function createSession, const authFile, const unrelatedFile, const colors, const authScore, const unrelatedScore
+
+Imports: node:test, node:assert/strict, ../src/relevance.js
 
 Preview:
 
@@ -110,6 +210,10 @@ test('scores task-specific files above unrelated files', () => {
 
 Role: General source files
 
+Symbols: function taskKeywords, function expandedKeywords, function countOccurrences, function scoreFileForTask, const STOP_WORDS, const DOMAIN_HINTS, const expanded, const keywords
+
+Imports: None detected
+
 Preview:
 
 ```js
@@ -129,22 +233,207 @@ const DOMAIN_HINTS = [
   { keywords: ['config', 'build', 'script', 'dependency'], hints: ['config', '
 ```
 
+### `docs/mcp.md`
+
+Role: Documentation
+
+Symbols: None detected
+
+Imports: None detected
+
+Preview:
+
+```md
+# MCP server
+
+RepoLens includes a minimal Model Context Protocol-style stdio server for coding agents that can call tools.
+
+## Run
+
+```bash
+node src/mcp.js
+```
+
+When installed as a package, use:
+
+```bash
+repolens-mcp
+```
+
+For client configuration snippets, see [`agent-setup.md`](agent-setup.md).
+
+## Tools
+
+### `generate_context`
+
+Generate Markdown and/or JSON context files for a local path or public GitHub repository URL.
+
+Input:
+
+```json
+{
+  "target": ".",
+  "task": "add GitHub OAuth login",
+  "agent": "codex",
+  "out": ".repolens",
+  "outputMode": "all",
+  "maxFiles": 800
+}
+```
+
+Returns a JSON summary containing the output directory, generated files, repository source, and indexed file count.
+
+### `repo_map`
+
+Return a machine-readable `repo-map.json` payload without writing Markdown files.
+
+Input:
+
+```json
+{
+  "target": ".",
+  "task": "fix payment webhook retries",
+  "agent": "codex",
+  "maxFiles": 800
+}
+```
+
+### `find_relevant_files`
+
+Return a compact list of the most relevant files for a task.
+
+Input:
+
+```json
+{
+  "target": ".",
+  "task": "add GitHub OAuth login",
+  "agent": "codex",
+  "maxFiles": 800,
+  "limit": 12
+}
+```
+
+This is the best tool for an agent's first question: "w
+```
+
+### `package.json`
+
+Role: Configuration and project metadata
+
+Symbols: None detected
+
+Imports: None detected
+
+Preview:
+
+```json
+{
+  "name": "repolens",
+  "version": "0.3.0",
+  "description": "Generate compact, agent-ready context packs for AI coding agents.",
+  "type": "module",
+  "files": [
+    "src/",
+    "scripts/",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "repolens": "./src/cli.js",
+    "repolens-mcp": "./src/mcp.js"
+  },
+  "scripts": {
+    "start": "node src/cli.js",
+    "test": "node --test test/*.test.js",
+    "smoke": "node scripts/smoke-test.js",
+    "pack:test": "node scripts/pack-test.js"
+  },
+  "keywords": [
+    "ai",
+    "coding-agent",
+    "context-engineering",
+    "repo-map",
+    "developer-tools"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HUAN2022A/repolens.git"
+  },
+  "homepage": "https://github.com/HUAN2022A/repolens#readme",
+  "bugs": {
+    "url": "https://github.com/HUAN2022A/repolens/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+```
+
+### `test/generator.test.js`
+
+Role: Tests and verification
+
+Symbols: function login, const repo, const pack, const pack, const parsed, const pack
+
+Imports: node:test, node:assert/strict, ../src/generator.js
+
+Preview:
+
+```js
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { generateContextPack } from '../src/generator.js';
+
+const repo = {
+  root: '/tmp/example',
+  source: '/tmp/example',
+  name: 'example',
+  scannedAt: '2026-01-01T00:00:00.000Z',
+  stack: ['Node.js / JavaScript'],
+  roleCounts: { config: 1, source: 1 },
+  gitignoreRules: [],
+  analysis: { symbolCount: 1, importCount: 1, filesWithSymbols: 1, filesWithImports: 1 },
+  files: [
+    { path: 'package.json', role: 'config', size: 2, extension: '.json', score: 50, symbols: [], imports: [], preview: '{"scripts":{"test":"node --test"}}' },
+    { path: 'src/auth.js', role: 'source', size: 42, extension: '.js', score: 10, symbols: [{ name: 'login', kind: 'function', line: 1 }], imports: [{ source: './session' }], preview: 'function login() { return "oauth" }' },
+  ],
+};
+
+test('generates all files by default', () => {
+  const pack = generateContextPack(repo, { task: 'add oauth login', agent: 'codex' });
+  assert.deepEqual(Object.keys(pack.files).sort(), [
+    'agent-prompt.md',
+    'architecture.md',
+    'overview.md',
+    'repo-map.json',
+    'task-context.md',
+  ]);
+});
+
+test('supports JSON-only output mode', () => {
+```
+
 ### `src/cli.js`
 
 Role: General source files
+
+Symbols: function printHelp, function parseArgs, function main, const VERSION, const args, const positional, const arg, const value
+
+Imports: ./context.js
 
 Preview:
 
 ```js
 #!/usr/bin/env node
-import { existsSync } from 'node:fs';
-import { mkdir, writeFile } from 'node:fs/promises';
-import path from 'node:path';
-import { scanRepository } from './scanner.js';
-import { generateContextPack } from './generator.js';
-import { isGitHubUrl, resolveSource } from './source.js';
+import { buildContextPack, writeContextPack } from './context.js';
 
-const VERSION = '0.1.0';
+const VERSION = '0.3.0';
 
 function printHelp() {
   console.log(`RepoLens ${VERSION}
@@ -173,275 +462,19 @@ Options:
 }
 
 function parseArgs(argv) {
-  const args
-```
-
-### `package.json`
-
-Role: Configuration and project metadata
-
-Preview:
-
-```json
-{
-  "name": "repolens",
-  "version": "0.1.0",
-  "description": "Generate compact, agent-ready context packs for AI coding agents.",
-  "type": "module",
-  "bin": {
-    "repolens": "./src/cli.js"
-  },
-  "scripts": {
-    "start": "node src/cli.js",
-    "test": "node --test test/*.test.js",
-    "smoke": "node scripts/smoke-test.js"
-  },
-  "keywords": [
-    "ai",
-    "coding-agent",
-    "context-engineering",
-    "repo-map",
-    "developer-tools"
-  ],
-  "author": "",
-  "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  }
-}
-```
-
-### `src/source.js`
-
-Role: General source files
-
-Preview:
-
-```js
-import { mkdtemp, rm } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
-import path from 'node:path';
-import { spawn } from 'node:child_process';
-
-const GITHUB_REPO_PATTERN = /^https?:\/\/github\.com\/([^/\s]+)\/([^/\s#?]+?)(?:\.git)?(?:[/?#].*)?$/i;
-
-export function isGitHubUrl(input) {
-  return GITHUB_REPO_PATTERN.test(input);
-}
-
-function toSshUrl(input) {
-  const match = input.match(GITHUB_REPO_PATTERN);
-  if (!match) return input;
-  return `git@github.com:${match[1]}/${match[2].replace(/\.git$/i, '')}.git`;
-}
-
-function run(command, args, options = {}) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(command, args, {
-      cwd: options.cwd,
-      stdio: ['ignore', 'pipe', 'pipe'],
-      shell: false,
-    });
-
-    let stdout = '';
-    let stderr = '';
-    child.stdout.on('data', (chunk) => { stdout += chunk.toString(); });
-    child.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
-    child.on('error', reject);
-    child.on('close', (code) => {
-      if (code === 0) {
-        resolve({ stdout, stderr });
-        return;
-      }
-      reject(new Error(`${command} ${args.join(' ')} failed with code ${code}: ${stderr || stdout}`));
-    })
-```
-
-### `test/generator.test.js`
-
-Role: Tests and verification
-
-Preview:
-
-```js
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import { generateContextPack } from '../src/generator.js';
-
-const repo = {
-  root: '/tmp/example',
-  source: '/tmp/example',
-  name: 'example',
-  scannedAt: '2026-01-01T00:00:00.000Z',
-  stack: ['Node.js / JavaScript'],
-  roleCounts: { config: 1, source: 1 },
-  gitignoreRules: [],
-  files: [
-    { path: 'package.json', role: 'config', size: 2, extension: '.json', score: 50, preview: '{"scripts":{"test":"node --test"}}' },
-    { path: 'src/auth.js', role: 'source', size: 42, extension: '.js', score: 10, preview: 'function login() { return "oauth" }' },
-  ],
-};
-
-test('generates all files by default', () => {
-  const pack = generateContextPack(repo, { task: 'add oauth login', agent: 'codex' });
-  assert.deepEqual(Object.keys(pack.files).sort(), [
-    'agent-prompt.md',
-    'architecture.md',
-    'overview.md',
-    'repo-map.json',
-    'task-context.md',
-  ]);
-});
-
-test('supports JSON-only output mode', () => {
-  const pack = generateContextPack(repo, { outputMode: 'json' });
-  assert.deepEqual(Object.keys(pack.files), ['repo-map.json']);
-  const parsed = JSON.parse(pack.files['repo-map.json']);
-  assert.equal(parse
-```
-
-### `.github/workflows/ci.yml`
-
-Role: General source files
-
-Preview:
-
-```yml
-name: CI
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  smoke:
-    name: Smoke test on Node ${{ matrix.node-version }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [18, 20]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Run unit tests
-        run: npm test
-
-      - name: Run smoke test
-        run: npm run smoke
-```
-
-### `src/generator.js`
-
-Role: General source files
-
-Preview:
-
-```js
-import path from 'node:path';
-import { scoreFileForTask } from './relevance.js';
-
-const ROLE_LABELS = {
-  config: 'Configuration and project metadata',
-  entrypoint: 'Entrypoints, routes, and API surfaces',
-  'business-logic': 'Business logic and services',
-  ui: 'UI, pages, and components',
-  test: 'Tests and verification',
-  docs: 'Documentation',
-  source: 'General source files',
-};
-
-function lines(items) {
-  return items.length ? items.map((item) => `- ${item}`).join('\n') : '- None detected';
-}
-
-function topFiles(repo, count = 18) {
-  return repo.files.slice(0, count);
-}
-
-function groupByRole(files) {
-  return files.reduce((acc, file) => {
-    if (!acc[file.role]) acc[file.role] = [];
-    acc[file.role].push(file);
-    return acc;
-  }, {});
-}
-
-function taskRelevantFiles(repo, task) {
-  if (!task) return topFiles(repo, 16);
-  return [...repo.files]
-    .map((file) => {
-      const relevance = scoreFileForTask(file, task);
-      return { ...file, taskScore: relevance.score, relevanceReasons: relevance.reasons };
-    })
-    .sort((a, b) => b.taskScore - a.taskScore || a.path.localeCompare(b.path))
-    .slice(0, 18);
-}
-
-function inferCommands(repo) {
-  const packageJson = repo.fil
-```
-
-### `src/gitignore.js`
-
-Role: General source files
-
-Preview:
-
-```js
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
-
-function escapeRegex(text) {
-  return text.replace(/[.+^${}()|[\]\\]/g, '\\$&');
-}
-
-function globToRegex(pattern) {
-  const normalized = pattern.split(path.sep).join('/');
-  const regex = escapeRegex(normalized)
-    .replace(/\\\*\\\*/g, '.*')
-    .replace(/\\\*/g, '[^/]*')
-    .replace(/\\\?/g, '[^/]');
-  return new RegExp(`^${regex}$`);
-}
-
-function parseLine(line) {
-  const trimmed = line.trim();
-  if (!trimmed || trimmed.startsWith('#')) return null;
-  if (trimmed.startsWith('!')) return null;
-
-  const anchored = trimmed.startsWith('/');
-  const directoryOnly = trimmed.endsWith('/');
-  const pattern = trimmed.replace(/^\//, '').replace(/\/$/, '');
-  if (!pattern) return null;
-
-  return {
-    raw: trimmed,
-    pattern,
-    anchored,
-    directoryOnly,
-    regex: pattern.includes('*') || pattern.includes('?') ? globToRegex(pattern) : null,
+  const args = {
+    target: '.',
+    task: '',
+    out: '.repolens',
+    agent: 'generic',
+    maxFiles: 800,
+    outputMode: 'all',
+    jsonOnly: false,
+    markdownOnly: false,
   };
-}
 
-export async function loadGitignore(root) {
-  try {
-    const content = await readFile(path.join(root, '.gitignore'), 'utf8');
-    return content.split(/\r?\n/).map(parseLine).filter(Boolean);
-  } catch {
-    return [];
-  }
-}
-
-export function isIgnoredByGitignore
+  const positional = [];
+  for (let i =
 ```
 
 ## Suggested implementation path for an AI coding agent
