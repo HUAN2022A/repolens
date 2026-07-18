@@ -90,6 +90,7 @@ The package includes the CLI source, smoke-test script, README, and license.
 - See [`CONTRIBUTING.md`](CONTRIBUTING.md) for local development and project principles.
 - See [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
 - See [`CHANGELOG.md`](CHANGELOG.md) for release history.
+- See [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md) for the first release notes.
 
 ## License
 
