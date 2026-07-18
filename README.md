@@ -131,7 +131,8 @@ The unit tests cover CLI validation, ignore matching, relevance scoring, and out
 - See [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md) for the first release notes.
 - See [`docs/releases/v0.2.0.md`](docs/releases/v0.2.0.md) for the MCP server release notes.
 - See [`docs/releases/v0.3.0.md`](docs/releases/v0.3.0.md) for the agent setup release notes.
-- See [`docs/releases/v0.4.0.md`](docs/releases/v0.4.0.md) for the latest release notes.
+- See [`docs/releases/v0.4.0.md`](docs/releases/v0.4.0.md) for the symbol/import release notes.
+- See [`docs/releases/v0.5.0.md`](docs/releases/v0.5.0.md) for the latest release notes.
 
 ## License
 

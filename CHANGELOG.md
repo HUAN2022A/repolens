@@ -2,6 +2,18 @@
 
 All notable changes to RepoLens will be documented here.
 
+## [0.5.0] - 2026-07-19
+
+### Added
+
+- Internal dependency edge resolution for relative imports.
+- Dependency graph output in `repo-map.json`, including edges, unresolved relative imports, and incoming-edge hotspots.
+- Dependency graph stats in smoke validation and generated architecture docs.
+
+### Changed
+
+- Refreshed example context output with dependency graph data.
+
 ## [0.4.0] - 2026-07-19
 
 ### Added
