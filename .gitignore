@@ -6,3 +6,5 @@ node_modules/
 .repolens-check-*/
 dist/
 coverage/
+repolens-*.tgz
+repolens-pack-output/

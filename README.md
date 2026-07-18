@@ -102,10 +102,11 @@ For a walkthrough, see [`docs/demo.md`](docs/demo.md). For reproducible baseline
 ```bash
 npm test
 npm run smoke
+npm run pack:test
 npm pack --dry-run
 ```
 
-The unit tests cover CLI validation, ignore matching, relevance scoring, and output modes. The smoke test runs RepoLens against this repository and verifies that all Markdown outputs plus `repo-map.json` are generated and parseable.
+The unit tests cover CLI validation, ignore matching, relevance scoring, and output modes. The smoke test runs RepoLens against this repository and verifies that all Markdown outputs plus `repo-map.json` are generated and parseable. The pack test installs the generated npm tarball in a temporary project and verifies the `repolens` bin.
 
 ## Contributing and security
 

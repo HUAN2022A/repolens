@@ -28,3 +28,6 @@ jobs:
 
       - name: Run smoke test
         run: npm run smoke
+
+      - name: Validate packed CLI
+        run: npm run pack:test
