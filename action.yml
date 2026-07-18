@@ -1,0 +1,75 @@
+name: RepoLens
+description: Generate compact, agent-ready repository context packs in GitHub Actions.
+author: HUAN2022A
+
+branding:
+  icon: search
+  color: blue
+
+inputs:
+  target:
+    description: Local repository path or public GitHub URL to analyze.
+    required: false
+    default: .
+  task:
+    description: Task description used to focus relevance ranking.
+    required: false
+    default: ''
+  agent:
+    description: Agent flavor: generic, codex, claude-code, or cursor.
+    required: false
+    default: generic
+  out:
+    description: Output directory for the context pack.
+    required: false
+    default: .repolens
+  output-mode:
+    description: Output mode: all, json, or markdown.
+    required: false
+    default: all
+  max-files:
+    description: Maximum number of files to inspect.
+    required: false
+    default: '800'
+  upload-artifact:
+    description: Upload the generated context pack as a workflow artifact.
+    required: false
+    default: 'true'
+  artifact-name:
+    description: Name for the uploaded artifact.
+    required: false
+    default: repolens-context
+
+outputs:
+  output-dir:
+    description: Absolute path to the generated context pack directory.
+    value: ${{ steps.generate.outputs.output-dir }}
+  files:
+    description: Comma-separated list of generated context pack files.
+    value: ${{ steps.generate.outputs.files }}
+  files-indexed:
+    description: Number of repository files indexed by RepoLens.
+    value: ${{ steps.generate.outputs.files-indexed }}
+
+runs:
+  using: composite
+  steps:
+    - name: Generate RepoLens context
+      id: generate
+      shell: pwsh
+      env:
+        INPUT_TARGET: ${{ inputs.target }}
+        INPUT_TASK: ${{ inputs.task }}
+        INPUT_AGENT: ${{ inputs.agent }}
+        INPUT_OUT: ${{ inputs.out }}
+        INPUT_OUTPUT_MODE: ${{ inputs.output-mode }}
+        INPUT_MAX_FILES: ${{ inputs.max-files }}
+      run: node "$env:GITHUB_ACTION_PATH/scripts/github-action.js"
+
+    - name: Upload RepoLens context
+      if: ${{ inputs.upload-artifact == 'true' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: ${{ steps.generate.outputs.output-dir }}
+        if-no-files-found: error

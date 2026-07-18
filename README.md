@@ -86,6 +86,20 @@ repolens-mcp
 
 It exposes `generate_context`, `repo_map`, `find_relevant_files`, `impact_analysis`, and `test_strategy` tools for coding agents. See [`docs/mcp.md`](docs/mcp.md), and setup snippets in [`docs/agent-setup.md`](docs/agent-setup.md).
 
+## GitHub Action
+
+Use RepoLens in CI to generate and upload an agent-ready context artifact:
+
+```yaml
+- uses: actions/checkout@v4
+- uses: HUAN2022A/repolens@v1.0.0
+  with:
+    task: review this pull request and identify likely impact
+    agent: codex
+```
+
+See [`docs/github-action.md`](docs/github-action.md) for inputs, outputs, and workflow examples.
+
 ## Example task context
 
 For a task like `add GitHub OAuth login`, RepoLens ranks relevant files and explains why they were selected:
@@ -106,6 +120,7 @@ For a walkthrough, see [`docs/demo.md`](docs/demo.md). For reproducible baseline
 
 - Local repository scanning with dependency/build/cache ignores.
 - Public GitHub URL scanning through shallow clone, with SSH fallback.
+- GitHub Action for CI, issue, and pull request context artifacts.
 - Common `.gitignore` pattern support.
 - Stack detection from manifests such as `package.json`, `pyproject.toml`, `go.mod`, and `Cargo.toml`.
 - File classification into config, entrypoint, business logic, UI, tests, docs, and source.
@@ -145,6 +160,7 @@ The unit tests cover CLI validation, ignore matching, relevance scoring, and out
 - See [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
 - See [`docs/architecture.md`](docs/architecture.md) for the internal architecture.
 - See [`docs/mcp-schema.md`](docs/mcp-schema.md) for the stable MCP tool contract.
+- See [`docs/github-action.md`](docs/github-action.md) for CI workflow usage.
 - See [`docs/v1-readiness.md`](docs/v1-readiness.md) for the v1.0 readiness audit.
 - See [`CHANGELOG.md`](CHANGELOG.md) for release history.
 - See [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md) for the first release notes.
