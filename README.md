@@ -17,6 +17,7 @@ AI coding agents are powerful, but they still waste time and tokens reading the 
 - expose project conventions and likely verification commands;
 - produce a prompt you can paste directly into an agent;
 - emit JSON for future MCP, GitHub Action, and tool integrations.
+- expose the same context through a minimal stdio MCP server.
 
 ## Quickstart
 
@@ -62,6 +63,18 @@ node src/cli.js . --json-only
 node src/cli.js . --markdown-only
 ```
 
+## MCP server
+
+RepoLens also ships a minimal stdio server:
+
+```bash
+node src/mcp.js
+# or, when installed:
+repolens-mcp
+```
+
+It exposes `generate_context` and `repo_map` tools for coding agents. See [`docs/mcp.md`](docs/mcp.md).
+
 ## Example task context
 
 For a task like `add GitHub OAuth login`, RepoLens ranks relevant files and explains why they were selected:
@@ -93,7 +106,7 @@ For a walkthrough, see [`docs/demo.md`](docs/demo.md). For reproducible baseline
 ## Roadmap
 
 - AST/tree-sitter symbols and dependency graph.
-- MCP server so agents can call `find_relevant_files(task)` directly.
+- Richer MCP compatibility and setup snippets for specific agents.
 - GitHub Action for issue/PR context comments.
 - npm package publishing.
 
