@@ -43,7 +43,7 @@ test('MCP server lists tools and returns a repo map', async () => {
       id: 2,
       method: 'tools/list',
     });
-    assert.deepEqual(listed.result.tools.map((tool) => tool.name), ['generate_context', 'repo_map', 'find_relevant_files']);
+    assert.deepEqual(listed.result.tools.map((tool) => tool.name), ['generate_context', 'repo_map', 'find_relevant_files', 'impact_analysis']);
 
     const called = await sendAndWait(server, {
       jsonrpc: '2.0',
@@ -70,6 +70,19 @@ test('MCP server lists tools and returns a repo map', async () => {
     const relevantPayload = JSON.parse(relevant.result.content[0].text);
     assert.equal(relevantPayload.files.length, 3);
     assert.ok(relevantPayload.files[0].path);
+
+    const impact = await sendAndWait(server, {
+      jsonrpc: '2.0',
+      id: 5,
+      method: 'tools/call',
+      params: {
+        name: 'impact_analysis',
+        arguments: { target: '.', file: 'src/mcp.js', task: 'change MCP tools', maxFiles: 100, limit: 5 },
+      },
+    });
+    const impactPayload = JSON.parse(impact.result.content[0].text);
+    assert.equal(impactPayload.file.path, 'src/mcp.js');
+    assert.ok(Array.isArray(impactPayload.impact.outgoing));
   } finally {
     server.child.kill();
     await once(server.child, 'exit');

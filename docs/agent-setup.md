@@ -73,15 +73,17 @@ Then ask the agent to call:
 
 - `find_relevant_files` before editing;
 - `repo_map` when it needs structured context;
+- `impact_analysis` after choosing a file to edit;
 - `generate_context` when you want Markdown files written to disk.
 
 ## Suggested agent workflow
 
 1. Call `find_relevant_files` with the user's task.
 2. Read the top files returned by RepoLens.
-3. Call `repo_map` if the task needs broader repository structure.
-4. Implement the change.
-5. Run tests suggested by the generated context.
+3. Call `impact_analysis` on the file the agent plans to edit.
+4. Call `repo_map` if the task needs broader repository structure.
+5. Implement the change.
+6. Run tests suggested by the generated context.
 
 ## Troubleshooting
 
