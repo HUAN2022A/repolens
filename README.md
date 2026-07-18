@@ -66,10 +66,11 @@ Then paste `.repolens/agent-prompt.md` and `.repolens/task-context.md` into your
 ## Smoke test
 
 ```bash
+npm test
 npm run smoke
 ```
 
-The smoke test runs RepoLens against this repository and verifies that all Markdown outputs plus `repo-map.json` are generated and parseable.
+The unit tests cover ignore matching, relevance scoring, and output modes. The smoke test runs RepoLens against this repository and verifies that all Markdown outputs plus `repo-map.json` are generated and parseable.
 
 ## License
 
