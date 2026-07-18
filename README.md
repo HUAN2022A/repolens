@@ -146,6 +146,7 @@ The unit tests cover CLI validation, ignore matching, relevance scoring, and out
 - See [`docs/releases/v0.4.0.md`](docs/releases/v0.4.0.md) for the symbol/import release notes.
 - See [`docs/releases/v0.5.0.md`](docs/releases/v0.5.0.md) for the latest release notes.
 - See [`docs/releases/v0.6.0.md`](docs/releases/v0.6.0.md) for npm publish-ready release notes.
+- See [`docs/releases/v0.7.0.md`](docs/releases/v0.7.0.md) for the latest release notes.
 
 ## License
 

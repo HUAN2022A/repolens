@@ -2,6 +2,18 @@
 
 All notable changes to RepoLens will be documented here.
 
+## [0.7.0] - 2026-07-19
+
+### Added
+
+- `tsconfig.json` and `jsconfig.json` path alias resolution for dependency edges.
+- Common `@/* -> src/*` alias convention when a repository contains `src/`.
+- Alias edge counts and alias rule metadata in `repo-map.json`.
+
+### Changed
+
+- Refreshed example context output with alias dependency graph metadata.
+
 ## [0.6.0] - 2026-07-19
 
 ### Changed
