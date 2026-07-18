@@ -2,6 +2,14 @@
 
 All notable changes to RepoLens will be documented here.
 
+## [0.3.0] - 2026-07-19
+
+### Added
+
+- `find_relevant_files` MCP tool for lightweight task-to-file routing.
+- MCP agent setup examples for generic clients, Claude Desktop-style configs, and editor agents.
+- Expanded MCP documentation with tool guidance and JSON-RPC examples.
+
 ## [0.2.0] - 2026-07-19
 
 ### Added

@@ -127,7 +127,8 @@ The unit tests cover CLI validation, ignore matching, relevance scoring, and out
 - See [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
 - See [`CHANGELOG.md`](CHANGELOG.md) for release history.
 - See [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md) for the first release notes.
-- See [`docs/releases/v0.2.0.md`](docs/releases/v0.2.0.md) for the latest release notes.
+- See [`docs/releases/v0.2.0.md`](docs/releases/v0.2.0.md) for the MCP server release notes.
+- See [`docs/releases/v0.3.0.md`](docs/releases/v0.3.0.md) for the latest release notes.
 
 ## License
 
