@@ -14,6 +14,7 @@ This MVP has no runtime dependencies and requires Node.js 18+.
 node src/cli.js .
 node src/cli.js https://github.com/user/repo
 node src/cli.js . --task "add GitHub OAuth login" --for codex
+node src/cli.js . --json-only
 ```
 
 If installed as a package, the command is:
@@ -46,6 +47,7 @@ RepoLens writes a `.repolens/` folder by default:
 - Ranks task-relevant files with path, filename, content, role, and domain-hint signals.
 - Produces an agent prompt tuned for generic agents, Codex, Claude Code, or Cursor.
 - Writes `repo-map.json` for tools, MCP servers, and future integrations.
+- Supports all-output, JSON-only, and Markdown-only generation modes.
 
 ## What comes next
 

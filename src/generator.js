@@ -203,6 +203,7 @@ ${relevant.map((file) => `- \`${file.path}\``).join('\n')}
 export function generateContextPack(repo, options = {}) {
   const task = options.task ?? '';
   const agent = options.agent ?? 'generic';
+  const outputMode = options.outputMode ?? 'all';
   const relevantFiles = taskRelevantFiles(repo, task).map((file) => ({
     path: file.path,
     role: file.role,
@@ -235,13 +236,17 @@ export function generateContextPack(repo, options = {}) {
       score: file.score,
     })),
   };
-  return {
-    files: {
-      'overview.md': generateOverview(repo),
-      'architecture.md': generateArchitecture(repo),
-      'task-context.md': generateTaskContext(repo, task),
-      'agent-prompt.md': generateAgentPrompt(repo, task, agent),
-      'repo-map.json': `${JSON.stringify(repoMap, null, 2)}\n`,
-    },
+  const markdownFiles = {
+    'overview.md': generateOverview(repo),
+    'architecture.md': generateArchitecture(repo),
+    'task-context.md': generateTaskContext(repo, task),
+    'agent-prompt.md': generateAgentPrompt(repo, task, agent),
   };
+  const jsonFiles = {
+    'repo-map.json': `${JSON.stringify(repoMap, null, 2)}\n`,
+  };
+
+  if (outputMode === 'json') return { files: jsonFiles };
+  if (outputMode === 'markdown') return { files: markdownFiles };
+  return { files: { ...markdownFiles, ...jsonFiles } };
 }

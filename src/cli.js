@@ -21,12 +21,15 @@ Examples:
   repolens https://github.com/user/repo
   repolens ./my-app --task "add GitHub OAuth login"
   repolens . --task "fix payment webhook retries" --for codex
+  repolens . --json-only
 
 Options:
   --task <text>    Task to generate focused context for
   --out <path>     Output directory, defaults to .repolens
   --for <agent>    Agent flavor: generic, codex, claude-code, cursor
   --max-files <n>  Maximum files to inspect, defaults to 800
+  --json-only      Write only repo-map.json
+  --markdown-only  Write only Markdown context files
   --help           Show help
   --version        Show version`);
 }
@@ -38,6 +41,7 @@ function parseArgs(argv) {
     out: '.repolens',
     agent: 'generic',
     maxFiles: 800,
+    outputMode: 'all',
   };
 
   const positional = [];
@@ -59,6 +63,14 @@ function parseArgs(argv) {
     }
     if (arg === '--max-files') {
       args.maxFiles = Number.parseInt(argv[++i] ?? '800', 10);
+      continue;
+    }
+    if (arg === '--json-only') {
+      args.outputMode = 'json';
+      continue;
+    }
+    if (arg === '--markdown-only') {
+      args.outputMode = 'markdown';
       continue;
     }
     if (arg.startsWith('--')) {
@@ -100,6 +112,7 @@ async function main() {
       task: args.task,
       agent: args.agent,
       outDir,
+      outputMode: args.outputMode,
     });
 
     await mkdir(outDir, { recursive: true });
