@@ -21,10 +21,10 @@ Task: add GitHub OAuth login
 - `examples/basic-context/repo-map.json`
 - `examples/README.md`
 - `test/relevance.test.js`
+- `test/generator.test.js`
 - `src/relevance.js`
 - `docs/mcp.md`
 - `package.json`
-- `test/generator.test.js`
 - `src/cli.js`
 - `docs/benchmark.md`
 - `src/source.js`

@@ -96,6 +96,7 @@ function generateArchitecture(repo) {
   const importRichFiles = repo.files
     .filter((file) => file.imports?.length)
     .slice(0, 10);
+  const dependencyHotspots = repo.graph?.summary?.hotspots ?? [];
   return `# Architecture Map
 
 This is an automatically generated first-pass map. Treat it as a navigation layer for humans and AI coding agents, not as a replacement for reading source code.
@@ -109,6 +110,8 @@ This is an automatically generated first-pass map. Treat it as a navigation laye
 - .gitignore rules loaded: ${repo.gitignoreRules?.length ?? 0}
 - Symbols detected: ${repo.analysis?.symbolCount ?? 0}
 - Imports detected: ${repo.analysis?.importCount ?? 0}
+- Internal dependency edges: ${repo.graph?.summary?.edgeCount ?? 0}
+- Unresolved relative imports: ${repo.graph?.summary?.unresolvedImportCount ?? 0}
 
 ## Likely layers
 
@@ -123,6 +126,10 @@ ${symbolRichFiles.length ? symbolRichFiles.map((file) => `- \`${file.path}\` —
 ## Import hotspots
 
 ${importRichFiles.length ? importRichFiles.map((file) => `- \`${file.path}\` — ${file.imports.slice(0, 5).map((item) => item.source).join(', ')}`).join('\n') : '- None detected'}
+
+## Internal dependency hotspots
+
+${dependencyHotspots.length ? dependencyHotspots.map((item) => `- \`${item.file}\` — ${item.incoming} incoming edge${item.incoming === 1 ? '' : 's'}`).join('\n') : '- None detected'}
 
 ## Suggested verification commands
 
@@ -246,6 +253,15 @@ export function generateContextPack(repo, options = {}) {
       importsDetected: repo.analysis?.importCount ?? 0,
       filesWithSymbols: repo.analysis?.filesWithSymbols ?? 0,
       filesWithImports: repo.analysis?.filesWithImports ?? 0,
+      dependencyEdges: repo.graph?.summary?.edgeCount ?? 0,
+      unresolvedRelativeImports: repo.graph?.summary?.unresolvedImportCount ?? 0,
+      filesWithOutgoingEdges: repo.graph?.summary?.filesWithOutgoingEdges ?? 0,
+      filesWithIncomingEdges: repo.graph?.summary?.filesWithIncomingEdges ?? 0,
+    },
+    dependencyGraph: {
+      edges: repo.graph?.edges ?? [],
+      unresolvedImports: repo.graph?.unresolvedImports ?? [],
+      hotspots: repo.graph?.summary?.hotspots ?? [],
     },
     relevantFiles,
     files: repo.files.map((file) => ({

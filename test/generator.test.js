@@ -11,6 +11,17 @@ const repo = {
   roleCounts: { config: 1, source: 1 },
   gitignoreRules: [],
   analysis: { symbolCount: 1, importCount: 1, filesWithSymbols: 1, filesWithImports: 1 },
+  graph: {
+    edges: [{ from: 'src/auth.js', to: 'src/session.js', source: './session' }],
+    unresolvedImports: [],
+    summary: {
+      edgeCount: 1,
+      unresolvedImportCount: 0,
+      filesWithOutgoingEdges: 1,
+      filesWithIncomingEdges: 1,
+      hotspots: [{ file: 'src/session.js', incoming: 1 }],
+    },
+  },
   files: [
     { path: 'package.json', role: 'config', size: 2, extension: '.json', score: 50, symbols: [], imports: [], preview: '{"scripts":{"test":"node --test"}}' },
     { path: 'src/auth.js', role: 'source', size: 42, extension: '.js', score: 10, symbols: [{ name: 'login', kind: 'function', line: 1 }], imports: [{ source: './session' }], preview: 'function login() { return "oauth" }' },
@@ -34,6 +45,8 @@ test('supports JSON-only output mode', () => {
   const parsed = JSON.parse(pack.files['repo-map.json']);
   assert.equal(parsed.schemaVersion, 1);
   assert.equal(parsed.stats.symbolsDetected, 1);
+  assert.equal(parsed.stats.dependencyEdges, 1);
+  assert.equal(parsed.dependencyGraph.edges[0].to, 'src/session.js');
   assert.deepEqual(parsed.files.find((file) => file.path === 'src/auth.js').symbols[0].name, 'login');
 });
 

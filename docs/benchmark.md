@@ -23,6 +23,8 @@ Observed output from `examples/basic-context/repo-map.json`:
 | Test files | 5 |
 | Symbols detected | See `repo-map.json` |
 | Imports detected | See `repo-map.json` |
+| Internal dependency edges | See `repo-map.json` |
+| Unresolved relative imports | See `repo-map.json` |
 
 ## Reproduce locally
 
@@ -44,5 +46,6 @@ node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('.repolens-b
 
 - The current scanner uses heuristics rather than AST-level symbol graphs.
 - Symbol and import extraction is best-effort and intentionally dependency-free.
+- Dependency edges currently resolve relative imports only; package-level and alias resolution are future work.
 - File relevance is based on path, filename, role, content mentions, and domain hints.
 - Token savings are not yet benchmarked against Repomix, full dumps, or agent-native search.

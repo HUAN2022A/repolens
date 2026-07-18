@@ -33,6 +33,10 @@ async function main() {
   if (!Array.isArray(repoMap.files) || repoMap.files.length === 0) throw new Error('repo-map has no indexed files');
   if (!Array.isArray(repoMap.relevantFiles) || repoMap.relevantFiles.length === 0) throw new Error('repo-map has no relevant files');
   if (typeof repoMap.stats.symbolsDetected !== 'number') throw new Error('repo-map is missing symbol stats');
+  if (typeof repoMap.stats.dependencyEdges !== 'number') throw new Error('repo-map is missing dependency edge stats');
+  if (!repoMap.dependencyGraph || !Array.isArray(repoMap.dependencyGraph.edges)) {
+    throw new Error('repo-map is missing dependency graph edges');
+  }
   if (!repoMap.files.every((file) => Array.isArray(file.symbols) && Array.isArray(file.imports))) {
     throw new Error('repo-map files must include symbols and imports arrays');
   }

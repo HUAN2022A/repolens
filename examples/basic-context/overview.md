@@ -1,6 +1,6 @@
 # RepoLens Overview: repolens
 
-Generated at: 2026-07-18T16:23:17.623Z
+Generated at: 2026-07-18T16:29:24.419Z
 
 ## Detected stack
 
@@ -8,9 +8,9 @@ Generated at: 2026-07-18T16:23:17.623Z
 
 ## Repository shape
 
-- Documentation: 17
-- General source files: 14
-- Tests and verification: 8
+- Documentation: 18
+- General source files: 15
+- Tests and verification: 9
 - Configuration and project metadata: 1
 
 ## Highest-signal files
@@ -23,6 +23,7 @@ Generated at: 2026-07-18T16:23:17.623Z
 - `src/context.js` — General source files
 - `src/generator.js` — General source files
 - `src/gitignore.js` — General source files
+- `src/graph.js` — General source files
 - `src/mcp.js` — General source files
 - `src/relevance.js` — General source files
 - `src/scanner.js` — General source files
@@ -34,7 +35,6 @@ Generated at: 2026-07-18T16:23:17.623Z
 - `CHANGELOG.md` — Documentation
 - `CODE_OF_CONDUCT.md` — Documentation
 - `CONTRIBUTING.md` — Documentation
-- `docs/agent-setup.md` — Documentation
 
 ## Notable areas
 
@@ -60,9 +60,9 @@ Generated at: 2026-07-18T16:23:17.623Z
 - `src/context.js`
 - `src/generator.js`
 - `src/gitignore.js`
+- `src/graph.js`
 - `src/mcp.js`
 - `src/relevance.js`
-- `src/scanner.js`
 
 ### Tests and verification
 
@@ -72,5 +72,5 @@ Generated at: 2026-07-18T16:23:17.623Z
 - `test/cli.test.js`
 - `test/generator.test.js`
 - `test/gitignore.test.js`
+- `test/graph.test.js`
 - `test/mcp.test.js`
-- `test/relevance.test.js`
