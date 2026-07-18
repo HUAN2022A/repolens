@@ -17,7 +17,7 @@ AI coding agents are powerful, but they still waste time and tokens reading the 
 - summarize the repository shape;
 - expose project conventions and likely verification commands;
 - produce a prompt you can paste directly into an agent;
-- emit JSON for future MCP, GitHub Action, and tool integrations.
+- emit JSON for future MCP, GitHub Action, and tool integrations;
 - expose the same context through a minimal stdio MCP server.
 
 ## Quickstart
@@ -119,10 +119,14 @@ For a walkthrough, see [`docs/demo.md`](docs/demo.md). For reproducible baseline
 
 ## Roadmap
 
-- AST/tree-sitter symbols and dependency graph.
-- Richer MCP compatibility and setup snippets for specific agents.
+See [`ROADMAP.md`](ROADMAP.md) for the full project roadmap.
+
+Near-term themes:
+
+- MCP resources and richer agent setup docs.
+- Package/workspace dependency resolution beyond relative and alias imports.
 - GitHub Action for issue/PR context comments.
-- npm package publishing.
+- Optional parser-backed analysis for deeper symbol and dependency extraction.
 
 ## Development
 
@@ -139,6 +143,8 @@ The unit tests cover CLI validation, ignore matching, relevance scoring, and out
 
 - See [`CONTRIBUTING.md`](CONTRIBUTING.md) for local development and project principles.
 - See [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
+- See [`docs/architecture.md`](docs/architecture.md) for the internal architecture.
+- See [`docs/mcp-schema.md`](docs/mcp-schema.md) for the stable MCP tool contract.
 - See [`CHANGELOG.md`](CHANGELOG.md) for release history.
 - See [`docs/releases/v0.1.0.md`](docs/releases/v0.1.0.md) for the first release notes.
 - See [`docs/releases/v0.2.0.md`](docs/releases/v0.2.0.md) for the MCP server release notes.
