@@ -10,7 +10,8 @@
     "LICENSE"
   ],
   "bin": {
-    "repolens": "./src/cli.js"
+    "repolens": "./src/cli.js",
+    "repolens-mcp": "./src/mcp.js"
   },
   "scripts": {
     "start": "node src/cli.js",

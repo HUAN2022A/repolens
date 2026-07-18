@@ -1,10 +1,5 @@
 #!/usr/bin/env node
-import { existsSync } from 'node:fs';
-import { mkdir, writeFile } from 'node:fs/promises';
-import path from 'node:path';
-import { scanRepository } from './scanner.js';
-import { generateContextPack } from './generator.js';
-import { isGitHubUrl, resolveSource } from './source.js';
+import { buildContextPack, writeContextPack } from './context.js';
 
 const VERSION = '0.1.0';
 
@@ -116,40 +111,19 @@ async function main() {
     return;
   }
 
-  const source = await resolveSource(args.target);
-  try {
-    const root = source.root;
-    if (!existsSync(root)) {
-      throw new Error(`Target path does not exist: ${root}`);
-    }
+  const { pack, outDir } = await buildContextPack({
+    target: args.target,
+    task: args.task,
+    agent: args.agent,
+    out: args.out,
+    maxFiles: args.maxFiles,
+    outputMode: args.outputMode,
+  });
+  await writeContextPack(pack, outDir);
 
-    const outDir = isGitHubUrl(args.target)
-      ? path.resolve(process.cwd(), args.out)
-      : path.resolve(root, args.out);
-    const repo = await scanRepository(root, {
-      maxFiles: args.maxFiles,
-      source: source.displayTarget,
-    });
-    const pack = generateContextPack(repo, {
-      task: args.task,
-      agent: args.agent,
-      outDir,
-      outputMode: args.outputMode,
-    });
-
-    await mkdir(outDir, { recursive: true });
-    await Promise.all(
-      Object.entries(pack.files).map(([fileName, content]) =>
-        writeFile(path.join(outDir, fileName), content, 'utf8')
-      )
-    );
-
-    console.log(`RepoLens generated ${Object.keys(pack.files).length} files in ${outDir}`);
-    for (const fileName of Object.keys(pack.files)) {
-      console.log(`- ${fileName}`);
-    }
-  } finally {
-    await source.cleanup();
+  console.log(`RepoLens generated ${Object.keys(pack.files).length} files in ${outDir}`);
+  for (const fileName of Object.keys(pack.files)) {
+    console.log(`- ${fileName}`);
   }
 }
 
