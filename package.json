@@ -1,0 +1,25 @@
+{
+  "name": "repolens",
+  "version": "0.1.0",
+  "description": "Generate compact, agent-ready context packs for AI coding agents.",
+  "type": "module",
+  "bin": {
+    "repolens": "./src/cli.js"
+  },
+  "scripts": {
+    "start": "node src/cli.js",
+    "smoke": "node src/cli.js . --task \"add GitHub login\" --out .repolens-smoke"
+  },
+  "keywords": [
+    "ai",
+    "coding-agent",
+    "context-engineering",
+    "repo-map",
+    "developer-tools"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
