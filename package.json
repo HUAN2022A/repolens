@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "description": "Generate compact, agent-ready context packs for AI coding agents.",
   "type": "module",
+  "files": [
+    "src/",
+    "scripts/",
+    "README.md",
+    "LICENSE"
+  ],
   "bin": {
     "repolens": "./src/cli.js"
   },
@@ -20,6 +26,17 @@
   ],
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HUAN2022A/repolens.git"
+  },
+  "homepage": "https://github.com/HUAN2022A/repolens#readme",
+  "bugs": {
+    "url": "https://github.com/HUAN2022A/repolens/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=18"
   }

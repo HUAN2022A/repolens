@@ -64,6 +64,10 @@ node src/cli.js ./my-app --task "add team invitation emails" --for codex
 
 Then paste `.repolens/agent-prompt.md` and `.repolens/task-context.md` into your AI coding agent before implementation.
 
+## Example output
+
+See [`examples/basic-context`](examples/basic-context) for a generated context pack from this repository using the task `add GitHub OAuth login`.
+
 ## Smoke test
 
 ```bash
@@ -72,6 +76,14 @@ npm run smoke
 ```
 
 The unit tests cover ignore matching, relevance scoring, and output modes. The smoke test runs RepoLens against this repository and verifies that all Markdown outputs plus `repo-map.json` are generated and parseable.
+
+## Package readiness
+
+```bash
+npm pack --dry-run
+```
+
+The package includes the CLI source, smoke-test script, README, and license.
 
 ## License
 
