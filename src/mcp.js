@@ -2,7 +2,7 @@
 import { buildContextPack, writeContextPack } from './context.js';
 import { analyzeImpact } from './impact.js';
 
-const serverInfo = { name: 'repolens', version: '0.7.0' };
+const serverInfo = { name: 'repolens', version: '0.8.0' };
 
 const tools = [
   {

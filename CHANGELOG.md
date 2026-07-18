@@ -2,6 +2,14 @@
 
 All notable changes to RepoLens will be documented here.
 
+## [0.8.0] - 2026-07-19
+
+### Added
+
+- `impact_analysis` core for file-level outgoing dependencies, incoming dependents, nearby tests, suggested files, and risk level.
+- `impact_analysis` MCP tool for coding agents.
+- MCP docs and tests for impact analysis workflows.
+
 ## [0.7.0] - 2026-07-19
 
 ### Added
