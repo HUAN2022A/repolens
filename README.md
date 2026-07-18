@@ -36,6 +36,7 @@ RepoLens writes a `.repolens/` folder by default:
 
 - Scans a local repository while ignoring dependency/build/cache directories.
 - Scans a local repository or a public GitHub repository URL.
+- Loads common `.gitignore` patterns to avoid project-specific noise.
 - Detects common stacks from manifests such as `package.json`, `pyproject.toml`, `go.mod`, and `Cargo.toml`.
 - Classifies files into config, entrypoint, business logic, UI, tests, docs, and source.
 - Generates a general repo overview and a task-focused context pack.
@@ -43,7 +44,6 @@ RepoLens writes a `.repolens/` folder by default:
 
 ## What comes next
 
-- Better `.gitignore` support.
 - AST/tree-sitter symbols and dependency graph.
 - MCP server so agents can call `find_relevant_files(task)` directly.
 - GitHub Action for issue/PR context comments.

@@ -1,5 +1,6 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { isIgnoredByGitignore, loadGitignore } from './gitignore.js';
 
 const DEFAULT_IGNORE_DIRS = new Set([
   '.git', '.hg', '.svn', 'node_modules', 'dist', 'build', 'out', 'coverage',
@@ -71,10 +72,12 @@ async function walk(root, current, files, options) {
     const relativePath = normalize(path.relative(root, fullPath));
     if (entry.isDirectory()) {
       if (DEFAULT_IGNORE_DIRS.has(entry.name)) continue;
+      if (isIgnoredByGitignore(relativePath, true, options.gitignoreRules)) continue;
       await walk(root, fullPath, files, options);
       continue;
     }
     if (!entry.isFile()) continue;
+    if (isIgnoredByGitignore(relativePath, false, options.gitignoreRules)) continue;
     const extension = path.extname(entry.name).toLowerCase();
     if (BINARY_EXTENSIONS.has(extension)) continue;
     if (!isProbablySource(entry.name) && !IMPORTANT_FILENAMES.has(entry.name)) continue;
@@ -117,7 +120,8 @@ function detectStack(files) {
 
 export async function scanRepository(root, options = {}) {
   const files = [];
-  await walk(root, root, files, { maxFiles: options.maxFiles ?? 800 });
+  const gitignoreRules = await loadGitignore(root);
+  await walk(root, root, files, { maxFiles: options.maxFiles ?? 800, gitignoreRules });
   files.sort((a, b) => b.score - a.score || a.path.localeCompare(b.path));
 
   const roleCounts = files.reduce((acc, file) => {
@@ -133,5 +137,6 @@ export async function scanRepository(root, options = {}) {
     stack: detectStack(files),
     files,
     roleCounts,
+    gitignoreRules: gitignoreRules.map((rule) => rule.raw),
   };
 }

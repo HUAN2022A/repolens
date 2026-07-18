@@ -110,6 +110,7 @@ This is an automatically generated first-pass map. Treat it as a navigation laye
 - Source: \`${repo.source ?? repo.root}\`
 - Detected stack: ${repo.stack.join(', ')}
 - Files indexed: ${repo.files.length}
+- .gitignore rules loaded: ${repo.gitignoreRules?.length ?? 0}
 
 ## Likely layers
 

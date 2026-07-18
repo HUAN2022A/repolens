@@ -2,5 +2,6 @@ node_modules/
 .repolens/
 .repolens-smoke/
 .repolens-demo-*/
+.repolens-check-*/
 dist/
 coverage/
